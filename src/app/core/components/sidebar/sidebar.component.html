@@ -1,4 +1,4 @@
-<div class="sidebar d-block d-lg-none">
+<div class="sidebar d-block d-lg-none" [@openCloseSidebar]="(showSidebar | async)">
     <div class="close-container d-flex justify-content-end align-items-center mb-4">
         <button class="close-btn me-3" (click)="onCloseSidenav()">
             <fa-icon [icon]="['fas', 'xmark']"></fa-icon>
@@ -26,11 +26,16 @@
                 <fa-icon 
                     class="caret ps-0 pe-4" 
                     [icon]="['fas', 'caret-down']"
+                    [@rotateCaret]="dropdownOpen ? false : true"
                 >
                 </fa-icon>
             </a>
-            <div>
-                <div class="dropdown-menu">
+            <div class="ps-4 activeDrop">
+                <ul 
+                    class="dropdown-menu rounded-0 py-0 overflow-hidden position-static"
+                    [ngClass]="{ 'show': dropdownOpen ? dropdownOpen : !dropdownOpen }"
+                    [@openCloseDropdown]="dropdownOpen ? true : false"
+                >
                     <li class="dropdown-item" *ngFor="let sub of item.submenuList">
                         <a 
                             class="dropdown-link"
@@ -41,8 +46,15 @@
                             {{ sub.label }}
                         </a>
                     </li>
-                </div>
+                </ul>
             </div>
         </li>
     </ul>
+</div>
+
+<div 
+    class="overlay d-lg-none" 
+    [ngClass]="{ 'show': (showSidebar | async) }" 
+    (click)="onCloseSidenav()"
+>
 </div>

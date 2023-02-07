@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { navMediaItems, navMenuItems } from 'src/app/shared/helpers/helpers';
+import { SidebarService } from 'src/app/shared/services/sidebar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,13 +13,14 @@ export class NavbarComponent {
 
   navbarSearchOpen = false;
 
-  constructor() {
+  constructor(private navService: SidebarService) {
     this.navMenuItems = navMenuItems;
     this.navMediaItems = navMediaItems;
   }
 
   onOpenSidenav() {
-
+    this.navService.setSidebar(true);
+    this.navbarSearchOpen = false;
   }
   
   toggleNavSearch() {
