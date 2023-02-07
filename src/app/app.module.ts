@@ -26,7 +26,9 @@ import { ForgotPasswordComponent } from './core/pages/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './core/pages/verify-email/verify-email.component';
 
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMagnifyingGlass, faShareNodes, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,15 @@ export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
       faBars,
+      faXmark,
+      faMagnifyingGlass,
+      faUser,
+      faShareNodes,
+      faYoutubeSquare,
+      faFacebook,
+      faTwitter,
+      faInstagram,
+      faGoogle,
     )
   }
 }

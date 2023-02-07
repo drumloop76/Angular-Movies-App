@@ -10,6 +10,8 @@ export class NavbarComponent {
   navMenuItems: any[];
   navMediaItems: any[];
 
+  navbarSearchOpen = false;
+
   constructor() {
     this.navMenuItems = navMenuItems;
     this.navMediaItems = navMediaItems;
@@ -19,4 +21,7 @@ export class NavbarComponent {
 
   }
   
+  toggleNavSearch() {
+    this.navbarSearchOpen = !this.navbarSearchOpen;
+  }
 }

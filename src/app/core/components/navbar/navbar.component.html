@@ -53,8 +53,58 @@
         <a href="#" class="navbar-brand position-absolute top-50 start-50 translate-middle m-0 p-0">
             SciFi'z
         </a>
-        <div class="navbar-container--right">
-        
+        <div class="navbar-container--right d-flex align-items-center pe-3">
+            <button 
+                class="search-toggler" 
+                type="button" 
+                (click)="toggleNavSearch()"
+            >
+                <fa-icon
+                    *ngIf="!navbarSearchOpen" 
+                    [icon]="['fas', 'magnifying-glass']"
+                >
+                </fa-icon>
+                <fa-icon 
+                    *ngIf="navbarSearchOpen" 
+                    [icon]="['fas', 'xmark']" 
+                    class="d-flex align-items-center justify-content-center" 
+                    style="color: red; font-size: 26px;"
+                >
+                </fa-icon>
+            </button>
+            <button class="action-item" [routerLink]="['login']">
+                <fa-icon [icon]="['far', 'user']"></fa-icon>
+            </button>
+            <div 
+                ngbDropdown 
+                class="media-container"
+                display="dynamic" 
+                placement="bottom-end"
+            >
+                <button 
+                    ngbDropdownToggle
+                    class="media-container--btn action-item"
+                    id="navMediaDropdown"
+                >
+                    <fa-icon [icon]="['fas', 'share-nodes']"></fa-icon>
+                </button>
+                <ul 
+                    ngbDropdownMenu
+                    class="dropdown media-menu position-absolute p-0"
+                    aria-labelledby="navMediaDropdown"
+                >
+                    <li class="dropdown-item media-item" *ngFor="let item of navMediaItems">
+                        <a
+                            href={{item.route}} 
+                            class="dropdown-link media-link" 
+                            target="_blank"
+                        >
+                            <fa-icon class="me-3" [icon]="[item.iconPrefix, item.iconName]"></fa-icon>
+                            {{ item.label }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

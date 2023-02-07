@@ -69,3 +69,37 @@
 .navbar-brand {
     @include logo;
 }
+
+.navbar-container--right {
+    button {
+        background: transparent;
+        margin: 0 5px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        outline: none;
+        fa-icon {
+            color: $light-300;
+            font-size: 22px;
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+}
+
+.media-container--btn {
+    &.dropdown-toggle::after {
+        content: none;
+    }
+}
+
+.media-menu .media-item {
+    .media-link {
+        display: flex;
+        align-items: center;
+        padding: 17px 40px 17px 20px;
+        font-size: 17px;
+    }
+}
+
