@@ -1,4 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@use './styles/abstracts' as *;
+@import './styles/bootstrap/bootstrap';
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-family: $primary_font;
+    font-weight: 400;
+    background: $body-bg;
+}
+
+a {
+    color: $dark-link-color;
+    &:hover {
+        color: $dark-link-hover-color;
+    }
+}
+
+p{
+    color: $white; //!!!
+}
+
+.p-dark {
+    color: $dark-800;
+}

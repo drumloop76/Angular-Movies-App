@@ -1,0 +1,17 @@
+@use './themes' as *;
+
+$primary_font: 'Inter';
+
+$dark-link-color: rgba($white, 85%);
+$dark-link-hover-color: $white;
+$dark-link-hover-bg: rgba($dark-900, .8);
+$dark-link-active-bg: rgba($dark-800, .9);
+
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
