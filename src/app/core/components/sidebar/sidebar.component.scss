@@ -1,0 +1,102 @@
+@use '../../../../styles/abstracts' as *;
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background: $black;
+    overflow-y: auto;
+    z-index: 10000 !important;
+}
+
+.close-container {
+    height: 60px;
+    .close-btn {
+        background: transparent;
+        color: $light-300;
+        border: none;
+        font-size: 22px;
+        padding: 8px 14px;
+        border-radius: 50%;
+        transition: all .2s ease;
+        &:hover {
+            background: $dark-link-hover-bg;
+            color: $white;
+            transition: all .2s ease;
+        }
+    }
+}
+
+.sidebar-list {
+    .list-item {
+        .list-link {
+            display: block;
+            font-size: 17px;
+            line-height: 55px;
+            padding-left: 25px;
+            .caret {
+                font-size: 16px;
+                color: $dark-link-color;
+                margin-left: 4px;
+                display: flex;
+                justify-content: center;
+            }
+            &:hover {
+                background: $dark-link-hover-bg;
+                .caret {
+                    color: $white;
+                }
+            }
+            &:active {
+                background: $dark-link-active-bg;
+            }
+        }
+    }
+}
+
+.list-link-active {
+    @include linkActive;
+}
+
+.activeDrop {
+    background: $dark-link-hover-bg;
+}
+
+.dropdown-menu {
+    background: $dark-800;
+    .dropdown-item {
+        .dropdown-link {
+            display: block;
+            font-size: 17px;
+            line-height: 55px;
+            padding-left: 25px;
+            &:hover {
+                background: rgba($dark-700, .9);
+                background: $dark-700;
+            }
+            &:active {
+                background: $dark-600;
+            }
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(56, 56, 56, 0.681);
+    z-index: 9000 !important;
+    transition: all 0.3s ease-in-out;
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease-in-out;
+    }
+}

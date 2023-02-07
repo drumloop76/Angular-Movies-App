@@ -26,7 +26,7 @@ import { ForgotPasswordComponent } from './core/pages/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './core/pages/verify-email/verify-email.component';
 
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBars, faMagnifyingGlass, faShareNodes, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCaretDown, faMagnifyingGlass, faShareNodes, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 
@@ -75,6 +75,7 @@ export class AppModule {
       faTwitter,
       faInstagram,
       faGoogle,
+      faCaretDown,
     )
   }
 }

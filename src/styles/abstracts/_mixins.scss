@@ -17,8 +17,15 @@
     font-size: 28px;
     font-weight: 900;
     letter-spacing: .6px;
-    // @include media-above(xxl) {
-    //     font-size: 30px;
-    //     letter-spacing: .8px;
-    // }
+    @include media-above(xxl) {
+        font-size: 30px;
+        letter-spacing: .8px;
+    }
+}
+
+@mixin linkActive {
+    color: t.$gold-900;
+    &:hover {
+        color: t.$gold-500;
+    }
 }
