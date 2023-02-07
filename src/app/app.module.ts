@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -25,6 +24,9 @@ import { LoginComponent } from './core/pages/login/login.component';
 import { SignUpComponent } from './core/pages/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './core/pages/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './core/pages/verify-email/verify-email.component';
+
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -57,4 +59,11 @@ import { VerifyEmailComponent } from './core/pages/verify-email/verify-email.com
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule { 
+  constructor(library: FaIconLibrary) {
+    library.addIcons(
+      faBars,
+    )
+  }
+}

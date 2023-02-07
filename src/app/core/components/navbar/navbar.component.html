@@ -1,1 +1,60 @@
-<p>navbar works!</p>
+<div class="container-fluid navbar">
+    <div class="container-xxl navbar-container h-100" style="max-width: 1400px;">
+        <div class="navbar-container--left  px-3">
+            <button class="sidenav-toggler d-lg-none" (click)="onOpenSidenav()">
+                <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+            </button>
+            <div class="navbar-menu d-none d-lg-block">
+                <ul class="navbar-menu__list d-flex align-items-center">
+                    <li 
+                        ngbDropdown
+                        class="list-item" 
+                        *ngFor="let item of navMenuItems"
+                    >
+                        <a 
+                            *ngIf="!item.hasDropdown"
+                            class="list-link"
+                            [routerLink]="[item.route]"
+                            routerLinkActive="list-link-active"
+                        >
+                            {{ item.label }}
+                        </a>
+                        <a 
+                            *ngIf="item.hasDropdown" 
+                            href="JavaScript:void(0);"
+                            ngbDropdownToggle
+                            type="button"
+                            id="dropdownBasic1"
+                            class="list-link d-flex align-items-center"
+                        >
+                            {{ item.label }}
+                        </a>
+                        <div class="dropdown">
+                            <ul    
+                                class="dropdown-menu"
+                                ngbDropdownMenu 
+                                aria-labelledby="dropdownBasic1"
+                            >
+                                <li class="dropdown-item" *ngFor="let sub of item.submenuList">
+                                    <a
+                                        class="dropdown-link"
+                                        [routerLink]="[sub.route]" 
+                                        routerLinkActive="list-link-active"
+                                    >
+                                        {{ sub.label }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" class="navbar-brand position-absolute top-50 start-50 translate-middle m-0 p-0">
+            SciFi'z
+        </a>
+        <div class="navbar-container--right">
+        
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+@use 'variables' as *;
+@use 'themes' as t;
+
+@mixin media-above($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+        @media (min-width: $breakpoint-value) {
+            @content;
+        }
+    } @else {
+        @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+}
+
+@mixin logo {
+    color: t.$white; //!!!
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: .6px;
+    // @include media-above(xxl) {
+    //     font-size: 30px;
+    //     letter-spacing: .8px;
+    // }
+}

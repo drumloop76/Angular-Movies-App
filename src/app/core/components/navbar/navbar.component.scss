@@ -1,0 +1,71 @@
+@use '../../../../styles/abstracts' as *;
+
+.navbar {
+    position: relative;
+    background: $black;
+    height: 60px;
+    @include media-above(xxl) {
+        height: 70px;
+    }
+}
+
+.sidenav-toggler {
+    background: transparent;
+    padding: 5px 9px;
+    color: $light-300;
+    font-size: 24px;
+    border-radius: 5px;
+    border: none;
+    transition: all .2s;
+    &:hover {
+        background: $dark-link-hover-bg;
+        color: $white;
+        transition: all .2s;
+    }
+}
+
+.navbar-menu__list .list-link {
+    display: block;
+    padding: 8px 10px;
+    margin-right: 5px;
+    font-size: 17px;
+    font-weight: 400;
+    @include media-above(xxl) {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+    &:hover {
+        background: $dark-link-hover-bg;
+    }
+    &:active {
+        background: $dark-link-active-bg;
+    }
+}
+
+.list-link-active {
+    color: $gold-900;
+    &:hover {
+        color: $gold-500;
+    }
+}
+
+.dropdown-menu {
+    -webkit-box-shadow: $dark-box-shadow; 
+    box-shadow: $dark-box-shadow;
+}
+
+.dropdown-item {
+    border-bottom: 1px solid rgba(black, .4);
+    &:last-child {
+        border-bottom: none;
+    }
+    .dropdown-link {
+        display: block;
+        padding: 17px 20px;
+        font-size: 17px;
+    }
+}
+
+.navbar-brand {
+    @include logo;
+}

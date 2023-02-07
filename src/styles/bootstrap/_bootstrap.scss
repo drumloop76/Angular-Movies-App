@@ -5,9 +5,18 @@
 
 $body-bg: rgba($black-blue, 90%);
 
+$grid-gutter-width: 0;
+
 $link-decoration: none;
 $link-color: v.$dark-link-color;
 $link-hover-color: $white;
+
+$dropdown-bg: $dark-500;
+$dropdown-link-hover-bg: $dark-400;
+$dropdown-link-active-bg: $dark-300;
+$dropdown-padding-y: 0;
+$dropdown-item-padding-y: 0;
+$dropdown-item-padding-x: 0;
 
 @import "variables";
 @import "maps";
