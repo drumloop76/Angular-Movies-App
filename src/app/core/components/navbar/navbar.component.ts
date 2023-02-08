@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { navMediaItems, navMenuItems } from 'src/app/shared/helpers/helpers';
 import { SidebarService } from 'src/app/shared/services/sidebar.service';
 
@@ -12,10 +13,15 @@ export class NavbarComponent {
   navMediaItems: any[];
 
   navbarSearchOpen = false;
+  showSearchBox!: Observable<boolean>;
 
   constructor(private navService: SidebarService) {
     this.navMenuItems = navMenuItems;
     this.navMediaItems = navMediaItems;
+  }
+
+  ngOnInit(): void {
+    
   }
 
   onOpenSidenav() {
