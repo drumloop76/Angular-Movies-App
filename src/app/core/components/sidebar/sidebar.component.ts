@@ -40,4 +40,5 @@ export class SidebarComponent implements OnInit {
   onCloseDropdown() {
     this.dropdownOpen = false;
   }
+  
 }

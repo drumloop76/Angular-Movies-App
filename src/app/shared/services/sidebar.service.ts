@@ -16,9 +16,5 @@ export class SidebarService {
   setSidebar(state: boolean) {
     this.showSidebar$.next(state);
   }
-
-  ngOnDestroy() {
-    this.showSidebar$.unsubscribe();
-  }
-  
+    
 }

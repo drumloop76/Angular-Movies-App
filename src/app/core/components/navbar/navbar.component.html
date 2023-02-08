@@ -57,15 +57,15 @@
             <button 
                 class="search-toggler" 
                 type="button" 
-                (click)="toggleNavSearch()"
+                (click)="onToggleSearchBox()"
             >
                 <fa-icon
-                    *ngIf="!navbarSearchOpen" 
+                    *ngIf="!(showSearchBox | async)"
                     [icon]="['fas', 'magnifying-glass']"
                 >
                 </fa-icon>
                 <fa-icon 
-                    *ngIf="navbarSearchOpen" 
+                    *ngIf="(showSearchBox | async)" 
                     [icon]="['fas', 'xmark']" 
                     class="d-flex align-items-center justify-content-center" 
                     style="color: red; font-size: 26px;"

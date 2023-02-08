@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { navMediaItems, navMenuItems } from 'src/app/shared/helpers/helpers';
+import { SearchService } from 'src/app/shared/services/search.service';
 import { SidebarService } from 'src/app/shared/services/sidebar.service';
 
 @Component({
@@ -8,28 +9,29 @@ import { SidebarService } from 'src/app/shared/services/sidebar.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   navMenuItems: any[];
   navMediaItems: any[];
 
-  navbarSearchOpen = false;
   showSearchBox!: Observable<boolean>;
 
-  constructor(private navService: SidebarService) {
-    this.navMenuItems = navMenuItems;
-    this.navMediaItems = navMediaItems;
-  }
+  constructor(
+    private navService: SidebarService, 
+    private searchService: SearchService) {
+      this.navMenuItems = navMenuItems;
+      this.navMediaItems = navMediaItems;
+    }
 
   ngOnInit(): void {
-    
+    this.showSearchBox = this.searchService.getSearchBox();
   }
 
   onOpenSidenav() {
     this.navService.setSidebar(true);
-    this.navbarSearchOpen = false;
   }
   
-  toggleNavSearch() {
-    this.navbarSearchOpen = !this.navbarSearchOpen;
+  onToggleSearchBox() {
+    this.searchService.toggleSearchBox();
   }
+
 }

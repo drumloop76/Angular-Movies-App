@@ -1,11 +1,12 @@
-@use '../../../../styles/abstracts' as *;
+@use 'abstracts' as *;
 
 .navbar {
     position: relative;
     background: $black;
-    height: 60px;
+    height: $nav-height-sm;
+    z-index: 990;
     @include media-above(xxl) {
-        height: 70px;
+        height: $nav-height-lg;
     }
 }
 

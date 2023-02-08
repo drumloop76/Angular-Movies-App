@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -11,7 +12,13 @@ export class SearchService {
 
   private showSearchBox$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient, 
+    public router: Router) { 
+      router.events.subscribe(() => {
+        this.setSearchBox(false);
+      });
+    }
 
   getSearchBox() {
     return this.showSearchBox$.asObservable();
@@ -19,6 +26,10 @@ export class SearchService {
 
   setSearchBox(state: boolean) {
     this.showSearchBox$.next(state);
+  }
+
+  toggleSearchBox() {
+    this.showSearchBox$.next(!this.showSearchBox$.value);
   }
 
   setCategory(value: any) {
