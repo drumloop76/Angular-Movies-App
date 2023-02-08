@@ -32,4 +32,15 @@ export const Animations = {
         })),
         transition('false <=> true', animate('.3s ease'))
     ]),
+    toggleNavSearch: trigger('toggleNavSearch', [
+        state('true', 
+            style({ 
+                transform: 'translateY(0px)' 
+            })),
+        state('false', 
+            style({ 
+                transform: 'translateY(-80px)' 
+            })),
+        transition('false <=> true', animate('.3s ease-out'))
+    ]),
 }

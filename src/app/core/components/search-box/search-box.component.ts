@@ -1,29 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, switchMap } from 'rxjs';
+import { Animations } from 'src/app/shared/animations/animations';
 import { searchOptions } from 'src/app/shared/helpers/helpers';
 import { SearchService } from 'src/app/shared/services/search.service';
 
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.scss']
+  styleUrls: ['./search-box.component.scss'],
+  animations: [
+    Animations.toggleNavSearch
+  ]
 })
 
-export class SearchBoxComponent {
+export class SearchBoxComponent implements OnInit {
   searchOptions: any[];
   searchSelector = "Select";
+
+  showSearchBox!: Observable<boolean>;
 
   constructor(private searchService: SearchService) {
     this.searchOptions = searchOptions;
   }
 
-  selectCategory(value: string, label: string) {
-    this.searchService.setCategory(value);
-    this.searchSelector = label;
+  ngOnInit(): void {
+    this.showSearchBox = this.searchService.getSearchBox();
   }
 
   closeInsideSearch() {
+    this.searchService.setSearchBox(false);
+  }
 
+  selectCategory(value: string, label: string) {
+    this.searchService.setCategory(value);
+    this.searchSelector = label;
   }
 
   // ------------------- API ---------------------------

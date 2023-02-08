@@ -1,6 +1,7 @@
 <div
     class="container-fluid searchBox shadow"
     id="searchBox"
+    [@toggleNavSearch]="(showSearchBox | async)"
 >
     <div class="container search-container h-100 d-flex">
         <div class="search-wrapper col-11 col-md-10 col-lg-8 mx-auto d-flex align-items-center">
