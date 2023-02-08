@@ -29,6 +29,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faBars, faCaretDown, faMagnifyingGlass, faShareNodes, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
+import { SearchBoxComponent } from './core/components/search-box/search-box.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@
     LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule,
