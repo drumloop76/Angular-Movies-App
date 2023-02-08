@@ -1,0 +1,100 @@
+@use 'abstracts' as *;
+
+#searchBox {
+    position: absolute;
+    background: $dark-900;
+    z-index: 300;
+    height: $nav-height-sm;
+}
+
+.search-container {
+    padding: 12px 0;
+    .search-wrapper {
+        position: relative;
+    }
+}
+
+.select-container {
+    position: absolute;
+    min-width: 8rem;
+    height: 100%;
+    .select-btn {
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        max-width: 8rem;
+        border: none;
+        outline: none;
+        border-radius: 0;
+        border-right: 1px solid $dark-800;
+        &.dropdown-toggle::after {
+            float: right;
+            margin-top: 10px;
+        }
+        &:hover {
+            background: $light-200;
+        }
+    }
+    .dropdown-menu  {
+        background: $dark-500;
+        padding: 0;
+        min-width: 8rem;
+        .dropdown-item{
+            color: $light-300 !important;
+            padding: 10px 0 10px 10px;
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+}
+
+.input-box {
+    padding-left: 9rem;
+    outline-color: $gold-900;
+}
+
+:host ::ng-deep #ngb-typeahead-0 {
+    position: relative;
+    padding: 0;
+    width: 100%;
+    border-radius: none;
+    -webkit-box-shadow: $dark-box-shadow; 
+    box-shadow: $dark-box-shadow;
+    .dropdown-item {
+        padding: 10px;
+        border-bottom: 1px solid $dark-900;
+        &:hover {
+            // -webkit-transition: all 0.15s ease-out;
+            // transition: all 0.15s ease-out;
+            .title {
+                color: $white;
+                &::before {
+                    @include linkUnderline-show;
+                }
+            }
+        }
+    }
+}
+
+.info-container {
+    margin-left: 15px;
+    .title {
+        position: relative;
+        color: $light-500;
+        letter-spacing: .5px;
+        margin-bottom: 10px;
+        &::before {
+            @include linkUnderline;
+        }
+    }
+    .year {
+        color: $light-500;
+    }
+}
+
+.image-border {
+    border: solid 1px $light-500;
+    width: 50px;
+    height: 70px;
+}

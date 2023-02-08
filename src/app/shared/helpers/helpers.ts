@@ -65,3 +65,22 @@ export const navMediaItems = [
     iconPrefix: 'fab'
   }
 ]
+
+export const searchOptions = [
+  {
+    label: 'All',
+    value: 'multi'
+  },
+  {
+    label: 'Movies',
+    value: 'movie'
+  },
+  {
+    label: 'TV Shows',
+    value: 'tv'
+  },
+  {
+    label: 'People',
+    value: 'person'
+  }
+]

@@ -11,7 +11,13 @@ export const environment = {
     authDomain: 'angular-scifiz-app-43749.firebaseapp.com',
     messagingSenderId: '895417809891',
   },
-  production: false
+  production: false,
+
+  baseUrl: 'https://api.themoviedb.org/3/',
+  apiKey: '971e172c7356bde6de5c6f89c1f776cb',
+  language: 'en-US',
+  region: 'US',
+  sciFiGenre: '878',
 };
 
 /*

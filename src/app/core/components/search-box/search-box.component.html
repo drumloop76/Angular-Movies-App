@@ -1,1 +1,115 @@
-<p>search-box works!</p>
+<div
+    class="container-fluid searchBox shadow"
+    id="searchBox"
+>
+    <div class="container search-container h-100 d-flex">
+        <div class="search-wrapper col-11 col-md-10 col-lg-8 mx-auto d-flex align-items-center">
+            <div ngbDropdown class="select-container">
+                <button 
+                    ngbDropdownToggle
+                    type="button"
+                    class="btn select-btn"
+                    id="searchDropdown"
+                    style="text-align:left; padding-left:8px"
+                >
+                    {{ searchSelector }}
+                </button>
+                <div
+                    ngbDropdownMenu
+                    class="select-options"
+                    aria-labelledby="searchDropdown"
+                >
+                    <button
+                        ngbDropdownItem
+                        class="select-item"
+                        *ngFor="let opt of searchOptions"
+                        (click)="selectCategory(opt.value, opt.label)"
+                    >
+                        {{ opt.label }}
+                    </button>
+                </div>
+            </div>
+            <input 
+                type="text"
+                id="typeahead-http"
+                class="input-box w-100 h-100"
+                [(ngModel)]="model" 
+                [ngbTypeahead]="search" 
+                [inputFormatter]="formatter"
+                [resultFormatter]="formatter"
+                [resultTemplate]="rt"
+                placeholder="Search..." 
+            />
+            <ng-template 
+                #rt 
+                let-r="result" 
+                let-t="term" 
+                class="search-dropdown container-fluid col-lg-8 col-md-10 col-12 p-0"
+            >
+                <div 
+                    class="w-100 d-flex" 
+                    [routerLink]="r.title ? ['/movie', r.id] : r.name ? ['/series', r.id] : ['/person', r.id]"
+                    (click)="closeInsideSearch()"
+                >
+                    <div class="img-container">
+                        <img 
+                            *ngIf="r.poster_path" 
+                            [src]="'https://image.tmdb.org/t/p/w500' + r.poster_path" 
+                            class="me-1" 
+                            style="width: 50px"
+                        />
+                        <img 
+                            *ngIf="r.profile_path" 
+                            [src]="'https://image.tmdb.org/t/p/w500' + r.profile_path" 
+                            class="me-1" 
+                            style="width: 50px"
+                        />
+                        <img 
+                            *ngIf="!r.poster_path && !r.profile_path" 
+                            src="./assets/images/no_img.png" 
+                            class="image-border" 
+                            style="width: 50px"
+                        />
+                    </div>            
+                    <div class="info-container d-flex flex-column">
+                        <ngb-highlight 
+                            *ngIf="r.title" 
+                            class="title" 
+                            [result]="r.title" 
+                            [term]="t"
+                        >
+                        </ngb-highlight>
+                        <ngb-highlight 
+                            *ngIf="r.name" 
+                            class="title" 
+                            [result]="r.name" 
+                            [term]="t"
+                        >
+                        </ngb-highlight>
+                        <ngb-highlight 
+                            *ngIf="r.release_date" 
+                            class="year" 
+                            [result]="r.release_date | date:'yyyy'" 
+                            [term]="t"
+                        >
+                        </ngb-highlight>
+                        <ngb-highlight 
+                            *ngIf="r.first_air_date" 
+                            class="year" 
+                            [result]="r.first_air_date | date:'yyyy'" 
+                            [term]="t"
+                        >
+                        </ngb-highlight>
+                        <ngb-highlight 
+                            *ngIf="r.known_for_department" 
+                            class="year" 
+                            [result]="r.known_for_department" 
+                            [term]="t"
+                        >
+                        </ngb-highlight>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
