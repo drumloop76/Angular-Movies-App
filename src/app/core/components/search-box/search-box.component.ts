@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { debounceTime, distinctUntilChanged, Observable, switchMap } from 'rxjs';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { debounceTime, distinctUntilChanged, Observable, switchMap, tap } from 'rxjs';
 import { Animations } from 'src/app/shared/animations/animations';
 import { searchOptions } from 'src/app/shared/helpers/helpers';
 import { SearchService } from 'src/app/shared/services/search.service';
@@ -43,7 +43,8 @@ export class SearchBoxComponent implements OnInit {
     text$.pipe(
       debounceTime(200),
       distinctUntilChanged(),
-      switchMap(term => term.length < 2 ? [] : this.searchService.search(term))     
+      switchMap(term => term.length < 2 ? [] : this.searchService.search(term)),
+      tap(x => this.searchService.getBrowseItems(x))
     );
 
   formatter = (x: {title: string}) => x.title;

@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'sign-up', component: SignUpComponent, pathMatch: 'full' },
   { path: 'forgot-password', component: ForgotPasswordComponent, pathMatch: 'full' },
+  { path: 'browse', loadChildren: () => import('./modules/browse-results/browse-results.module').then(m => m.BrowseResultsModule) },
   { path: 'movies', loadChildren: () => import('./modules/movies/movies.module').then(m => m.MoviesModule) }, 
   { path: 'shows', loadChildren: () => import('./modules/tv-shows/tv-shows.module').then(m => m.TvShowsModule) }, 
   { path: 'about', loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule) }, 

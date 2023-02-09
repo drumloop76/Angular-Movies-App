@@ -7,10 +7,15 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SearchService {
   category: string = 'multi';
+  browseTerm: string = '';
 
   private showSearchBox$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  private searchItems$ = new BehaviorSubject(null);
+  searchItems = this.searchItems$.asObservable();
 
   constructor(
     private http: HttpClient, 
@@ -37,6 +42,7 @@ export class SearchService {
   }
 
   search(term: string): Observable<any> {
+    this.browseTerm = term;
     if(term === '') {      
       return of([]);
     }
@@ -45,6 +51,15 @@ export class SearchService {
       .pipe(map((data: any) => {
         return data.results.slice(0, 10)
       }));
+  }
+
+  getSearchTerm() {
+    return this.browseTerm;
+  }
+
+  getBrowseItems(items: any) {
+    this.searchItems$.next(items);
+    this.getSearchTerm();
   }
 
 }
