@@ -12,7 +12,7 @@ export class SearchService {
   category: string = 'multi';
   browseTerm: string = '';
 
-  private showSearchBox$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private showSearchBox$ = new BehaviorSubject<boolean>(false);
 
   private searchItems$ = new BehaviorSubject(null);
   searchItems = this.searchItems$.asObservable();
@@ -25,7 +25,7 @@ export class SearchService {
       });
     }
 
-  getSearchBox() {
+  getSearchBox(): Observable<boolean> {
     return this.showSearchBox$.asObservable();
   }
 
@@ -49,11 +49,11 @@ export class SearchService {
     
     return this.http.get(`${environment.baseUrl}search/${this.category}?api_key=${environment.apiKey}&query=${term}&language=${environment.language}&include_adult=false`)
       .pipe(map((data: any) => {
-        return data.results.slice(0, 10)
+        return data.results
       }));
   }
 
-  getSearchTerm() {
+  getSearchTerm(): string {
     return this.browseTerm;
   }
 

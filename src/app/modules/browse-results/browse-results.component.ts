@@ -12,19 +12,19 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
   browseItems: [] = [];
   browseTerm: string = '';
 
-  constructor(private searchService: SearchService, private cdr: ChangeDetectorRef) {}
+  constructor(private _searchService: SearchService, private _cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getBrowseItems();
   }
 
   getBrowseItems() {
-    this.searchService.searchItems.subscribe((data: any) => {
+    this._searchService.searchItems.subscribe((data: any) => {
+      if(data == null) return
       console.log(data)
       this.browseItems = data;
-      this.browseTerm = this.searchService.getSearchTerm();
-      console.log(this.browseTerm)
-      this.cdr.detectChanges();
+      this.browseTerm = this._searchService.getSearchTerm();
+      this._cdr.detectChanges();
     })
   }
 

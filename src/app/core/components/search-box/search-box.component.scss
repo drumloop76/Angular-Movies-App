@@ -43,9 +43,24 @@
             color: $light-300 !important;
             padding: 10px 0 10px 10px;
             &:hover {
-                color: $white;
+                color: $white !important;
             }
         }
+    }
+}
+
+.search-btn {
+    position: absolute;
+    background: transparent;
+    right: 0;
+    height: 100%;
+    padding: 0 10px;
+    max-width: 8rem;
+    border: none;
+    outline: none;
+    &:hover {
+        color: $dark-300;
+        
     }
 }
 
@@ -54,7 +69,7 @@
     outline-color: $gold-900;
 }
 
-:host ::ng-deep #ngb-typeahead-0 {
+:host ::ng-deep #ngb-typeahead-0 { background-color: black;
     position: relative;
     padding: 0;
     width: 100%;
@@ -64,37 +79,58 @@
     .dropdown-item {
         padding: 10px;
         border-bottom: 1px solid $dark-900;
+        .img-container {
+            position: relative;
+            min-width: 65px;
+            height: 90px;
+            -webkit-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+            // .image-border {
+                
+            // }
+        }
+        .info-container {
+            margin-left: 15px;
+            overflow: hidden;
+            .info-title {
+                display: flex;
+                align-items: flex-end;
+                .title {
+                    color: $white;
+                    font-size: 16px;
+                    font-weight: 300;
+                    letter-spacing: .7px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    span {
+                        color: $white;
+                        font-size: 16px;
+                        font-weight: 400;
+                        letter-spacing: .7px;
+                    }
+                }
+                span {
+                    font-size: 14px;
+                    font-weight: 300;
+                    letter-spacing: .4px;
+                }
+            }
+            .item-type {
+                color: $light-700;
+                font-weight: 300;
+            }
+        }
+        
         &:hover {
-            // -webkit-transition: all 0.15s ease-out;
-            // transition: all 0.15s ease-out;
-            .title {
-                color: $white;
-                &::before {
-                    @include linkUnderline-show;
+            -webkit-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+            .info-container .title {
+                color: $gold-400;
+                span {
+                    color: $gold-400;
                 }
             }
         }
     }
-}
-
-.info-container {
-    margin-left: 15px;
-    .title {
-        position: relative;
-        color: $light-500;
-        letter-spacing: .5px;
-        margin-bottom: 10px;
-        &::before {
-            @include linkUnderline;
-        }
-    }
-    .year {
-        color: $light-500;
-    }
-}
-
-.image-border {
-    border: solid 1px $light-500;
-    width: 50px;
-    height: 70px;
 }

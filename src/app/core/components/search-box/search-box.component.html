@@ -3,8 +3,8 @@
     id="searchBox"
     [@toggleNavSearch]="(showSearchBox | async)"
 >
-    <div class="container search-container h-100 d-flex">
-        <div class="search-wrapper col-11 col-md-10 col-lg-8 mx-auto d-flex align-items-center">
+    <div class="container-xxl search-container h-100 d-flex px-1 px-md-3">
+        <div class="search-wrapper col-12 col-md-10 col-lg-8 mx-auto d-flex align-items-center">
             <div ngbDropdown class="select-container">
                 <button 
                     ngbDropdownToggle
@@ -39,7 +39,7 @@
                 [inputFormatter]="formatter"
                 [resultFormatter]="formatter"
                 [resultTemplate]="rt"
-                placeholder="Search..." 
+                placeholder="Search..."
             />
             <ng-template 
                 #rt 
@@ -54,71 +54,58 @@
                 >
                     <div class="img-container">
                         <img 
-                            *ngIf="r.poster_path" 
-                            [src]="'https://image.tmdb.org/t/p/w500' + r.poster_path" 
-                            class="me-1" 
-                            style="width: 50px"
-                        />
-                        <img 
-                            *ngIf="r.profile_path" 
-                            [src]="'https://image.tmdb.org/t/p/w500' + r.profile_path" 
-                            class="me-1" 
-                            style="width: 50px"
+                            *ngIf="r.poster_path || r.profile_path" 
+                            [ngSrc]="r.poster_path || r.profile_path" 
+                            class="me-1 position-absolute" 
+                            fill
+                            [alt]="(r.title || r.name) + ' poster image'"
                         />
                         <img 
                             *ngIf="!r.poster_path && !r.profile_path" 
                             src="./assets/images/no_img.png" 
                             class="image-border" 
-                            style="width: 50px"
+                            width="65px"
+                            height="90px"
+                            alt="(r.title || r.name) + ' poster image'"
                         />
                     </div>            
                     <div class="info-container d-flex flex-column">
-                        <ngb-highlight 
-                            *ngIf="r.title" 
-                            class="title" 
-                            [result]="r.title" 
-                            [term]="t"
-                        >
-                        </ngb-highlight>
-                        <ngb-highlight 
-                            *ngIf="r.name" 
-                            class="title" 
-                            [result]="r.name" 
-                            [term]="t"
-                        >
-                        </ngb-highlight>
-                        <ngb-highlight 
-                            *ngIf="r.release_date" 
-                            class="year" 
-                            [result]="r.release_date | date:'yyyy'" 
-                            [term]="t"
-                        >
-                        </ngb-highlight>
-                        <ngb-highlight 
-                            *ngIf="r.first_air_date" 
-                            class="year" 
-                            [result]="r.first_air_date | date:'yyyy'" 
-                            [term]="t"
-                        >
-                        </ngb-highlight>
-                        <ngb-highlight 
-                            *ngIf="r.known_for_department" 
-                            class="year" 
-                            [result]="r.known_for_department" 
-                            [term]="t"
-                        >
-                        </ngb-highlight>
+                        <div *ngIf="r.title || r.name" class="info-title d-flex flex-wrap mb-2">
+                            <ngb-highlight                                 
+                                class="title me-2" 
+                                [result]="r.title || r.name" 
+                                [term]="t"                            
+                            >
+                            </ngb-highlight>
+                            <span *ngIf="r.media_type === 'movie'">
+                                {{ (r.release_date | date:'yyyy') }}
+                            </span>
+                            <span *ngIf="r.media_type === 'tv'">
+                                {{ (r.first_air_date | date:'yyyy') }}
+                            </span>
+                        </div>
+                        <div >
+                            <ngb-highlight 
+                                class="item-type" 
+                                [result]="r.media_type || r.known_for_department" 
+                                [term]="t"
+                            >
+                            </ngb-highlight>
+                            <span *ngIf="r.media_type === 'tv'" class="item-type"> show</span>
+                        </div>
                     </div>
                 </div>
             </ng-template>
+            <button 
+                class="search-btn"
+                type="button"
+                [routerLink]="['browse']"
+                (click)="closeInsideSearch()"
+            >
+                <fa-icon
+                    [icon]="['fas', 'magnifying-glass']">
+                </fa-icon>
+            </button>
         </div>
-        <button 
-            type="button"
-            [routerLink]="['browse']"
-        >
-            <fa-icon
-                [icon]="['fas', 'magnifying-glass']">
-            </fa-icon>
-        </button>
     </div>
 </div>
