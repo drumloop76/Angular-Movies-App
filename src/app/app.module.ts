@@ -30,6 +30,7 @@ import { faBars, faCaretDown, faMagnifyingGlass, faShareNodes, faXmark } from '@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 import { SearchBoxComponent } from './core/components/search-box/search-box.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { SearchBoxComponent } from './core/components/search-box/search-box.comp
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,
+    SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

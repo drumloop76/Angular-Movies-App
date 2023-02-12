@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GenreNamePipe } from './pipes/genre-name.pipe';
+import { GenreNamePipe } from './genre-name.pipe';
 
 
 
@@ -10,9 +10,6 @@ import { GenreNamePipe } from './pipes/genre-name.pipe';
   ],
   imports: [
     CommonModule
-  ],
-  exports: [
-    GenreNamePipe
   ]
 })
-export class SharedModule { }
+export class PipesModule { }
