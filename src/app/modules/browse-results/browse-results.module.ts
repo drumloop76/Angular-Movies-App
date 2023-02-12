@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { BrowseResultsRoutingModule } from './browse-results-routing.module';
 import { BrowseResultsComponent } from './browse-results.component';
@@ -14,9 +14,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     BrowseResultsRoutingModule,
     FontAwesomeModule,
+    NgOptimizedImage,
   ],
   exports: [
-    FontAwesomeModule,
   ]
 })
 export class BrowseResultsModule { }

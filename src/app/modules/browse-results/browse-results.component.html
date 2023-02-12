@@ -1,29 +1,94 @@
 <div class="container-fluid">
-    <div class="container-xxl browse-container p-5">
+    <div class="container-xxl browse-container py-5">
         <h1 class="ps-4 pb-5">Search results for "{{ browseTerm }}"</h1>
-        <div class="browse-wrapper" *ngFor="let item of browseItems">
-            <!-- <h4>Movies</h4> -->
-            <div *ngIf="item['media_type'] === 'movie'" class="item-container my-2">
-                
-                <div class="movie-item d-flex px-3 px-2 my-2">
-                    <div class="img-container position-relative mb-auto">                        
-                        <img class="img" *ngIf="item['poster_path']" src="https://image.tmdb.org/t/p/w500/{{ item['poster_path'] }}" alt="item['title']" width="80px">
-                        <img class="img" *ngIf="!item['poster_path']" src="assets/images/no_img.png" alt="item['title']" width="80px">
+        <div class="browse-wrapper">
+            <h2 class="my-5">Movies</h2>
+            <div *ngFor="let item of browseItems" class="">
+                <div *ngIf="item['media_type'] === 'movie'" class="movie-item d-flex px-3 py-2 my-2">
+                    <div class="img-container mb-auto">                        
+                        <img 
+                            *ngIf="item['poster_path']" 
+                            class="me-1 position-absolute"
+                            [ngSrc]="item['poster_path']" 
+                            [alt]="item['title'] + ' poster image'" 
+                            fill
+                        />
+                        <img 
+                            *ngIf="!item['poster_path']" 
+                            class="me-1 position-absolute"
+                            src="assets/images/no_img.png" 
+                            alt="item['title'] + ' poster image'" 
+                            width="65px"
+                            height="90px"
+                        />
                     </div>
                     <div class="px-4">
-                        <h5>{{ item['title'] }} <span>( {{ item['release_date'] | date:"yyyy" }} )</span></h5>
-                        
+                        <h5>
+                            {{ item['title'] }} <span>( {{ item['release_date'] | date:"yyyy" }} )</span>
+                        </h5>
                         <fa-icon [icon]="['fas', 'star']"></fa-icon>
                         <span>{{item['vote_average']}}</span>  
                     </div>
                 </div>
-
             </div>
-            <div class="shows-container">
-                
+            <h2 class="my-5">TV Shows</h2>
+            <div *ngFor="let item of browseItems" class="">
+                <div *ngIf="item['media_type'] === 'tv'">
+                    <div class="movie-item d-flex px-3 py-2 my-2">
+                        <div class="img-container position-relative mb-auto">                        
+                            <img 
+                                *ngIf="item['poster_path']" 
+                                class="me-1 position-absolute"
+                                [ngSrc]="item['poster_path']" 
+                                [alt]="item['title'] + ' poster image'" 
+                                fill
+                            />
+                            <img 
+                                *ngIf="!item['poster_path']" 
+                                class="me-1 position-absolute"
+                                src="assets/images/no_img.png" 
+                                alt="item['title'] + ' poster image'" 
+                                width="65px"
+                                height="90px"
+                            />
+                        </div>
+                        <div class="px-4">
+                            <h5>
+                                {{ item['name'] }} <span>( {{ item['first_air_date'] | date:"yyyy" }} )</span>
+                            </h5>
+                            <fa-icon [icon]="['fas', 'star']"></fa-icon>
+                            <span>{{item['vote_average']}}</span>  
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="persons-container">
-                
+            <h2 class="my-5">People</h2>
+            <div *ngFor="let item of browseItems" class="">
+                <div *ngIf="!(item['media_type'] === 'movie' || item['media_type'] === 'tv')">
+                    <div class="movie-item d-flex px-3 py-2 my-2">
+                        <div class="img-container position-relative mb-auto">                        
+                            <img 
+                                *ngIf="item['profile_path']" 
+                                class="me-1 position-absolute"
+                                [ngSrc]="item['profile_path']" 
+                                [alt]="item['title'] + ' poster image'" 
+                                fill
+                            />
+                            <img 
+                                *ngIf="!item['profile_path']" 
+                                class="me-1 position-absolute"
+                                src="assets/images/no_img.png" 
+                                alt="item['title'] + ' poster image'" 
+                                width="65px"
+                                height="90px"
+                            />
+                        </div>
+                        <div class="px-4">
+                            <h5>{{ item['name'] }}</h5>
+                            <span>{{item['known_for_department']}}</span>  
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
