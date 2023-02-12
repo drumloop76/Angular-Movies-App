@@ -1,0 +1,36 @@
+@use 'abstracts' as *;
+
+h1,
+h5,
+span {
+    color: $white;
+}
+
+// .browse-container {
+
+// }
+
+// .browse-wrapper {
+
+// }
+
+.item-container {
+    width: 100%;
+    background-color: $dark-300;
+    border: 1px solid $dark-500;
+}
+
+.movie-item {
+    h5 span {
+        font-size: 16px;
+        font-weight: 400;
+        margin-left: 10px;
+    }
+}
+
+fa-icon {
+    color: $gold-500;
+    margin-right: 6px;
+    padding-top: 3px;
+    font-size: 12px;
+}

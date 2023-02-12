@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BrowseResultsRoutingModule } from './browse-results-routing.module';
 import { BrowseResultsComponent } from './browse-results.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -11,7 +12,11 @@ import { BrowseResultsComponent } from './browse-results.component';
   ],
   imports: [
     CommonModule,
-    BrowseResultsRoutingModule
+    BrowseResultsRoutingModule,
+    FontAwesomeModule,
+  ],
+  exports: [
+    FontAwesomeModule,
   ]
 })
 export class BrowseResultsModule { }

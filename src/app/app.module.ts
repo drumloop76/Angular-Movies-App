@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgOptimizedImage, provideImgixLoader } from '@angular/common'
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -26,7 +27,7 @@ import { ForgotPasswordComponent } from './core/pages/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './core/pages/verify-email/verify-email.component';
 
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBars, faCaretDown, faMagnifyingGlass, faShareNodes, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCaretDown, faMagnifyingGlass, faShareNodes, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 import { SearchBoxComponent } from './core/components/search-box/search-box.component';
@@ -53,6 +54,7 @@ import { SearchBoxComponent } from './core/components/search-box/search-box.comp
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    NgOptimizedImage,
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -60,7 +62,9 @@ import { SearchBoxComponent } from './core/components/search-box/search-box.comp
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage())
   ],
-  providers: [],
+  providers: [
+    provideImgixLoader('https://image.tmdb.org/t/p/w500')
+  ],
   bootstrap: [AppComponent]
 })
 
@@ -78,6 +82,7 @@ export class AppModule {
       faInstagram,
       faGoogle,
       faCaretDown,
+      faStar,
     )
   }
 }
