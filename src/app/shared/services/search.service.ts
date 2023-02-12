@@ -49,6 +49,7 @@ export class SearchService {
     
     return this.http.get(`${environment.baseUrl}search/${this.category}?api_key=${environment.apiKey}&query=${term}&language=${environment.language}&include_adult=false`)
       .pipe(map((data: any) => {
+        console.log(data.results)
         return data.results
       }));
   }

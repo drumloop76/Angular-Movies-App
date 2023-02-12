@@ -28,6 +28,7 @@
                         </h5>
                         <fa-icon [icon]="['fas', 'star']"></fa-icon>
                         <span>{{item['vote_average']}}</span>  
+                        <p>{{ item['genre_ids'] | genreName: moviesGenres: tvGenres }}</p>
                     </div>
                 </div>
             </div>

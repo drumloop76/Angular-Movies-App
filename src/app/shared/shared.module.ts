@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GenreNamePipe } from './pipes/genre-name.pipe';
+import { PipeModule } from './pipes/pipe.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
 @NgModule({
   declarations: [
-    GenreNamePipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FontAwesomeModule,
+    PipeModule,
   ],
   exports: [
-    GenreNamePipe
+    FontAwesomeModule,
+    PipeModule,
   ]
 })
+
 export class SharedModule { }

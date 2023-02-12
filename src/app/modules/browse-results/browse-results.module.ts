@@ -3,7 +3,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { BrowseResultsRoutingModule } from './browse-results-routing.module';
 import { BrowseResultsComponent } from './browse-results.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,8 +13,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     CommonModule,
     BrowseResultsRoutingModule,
-    FontAwesomeModule,
     NgOptimizedImage,
+    SharedModule,
   ],
   exports: [
   ]
