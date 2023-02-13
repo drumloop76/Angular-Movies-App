@@ -6,25 +6,25 @@ import { Genres } from '../models/genres.model';
 })
 
 export class GenreNamePipe implements PipeTransform {
-  transform(value: any[], arr1: any[], arr2: any[], spc = ', '): any {
-    let newValue: any[] = [];
+  transform(value: any, arr1: any[], arr2: any[]): any {
+    let newValue: any;
     const fullArr = [ ...arr1, ...arr2];
 
-    value.map((x: any) => {
-      (fullArr || []).filter((y: any) => {
-        if(x === y.id) {
-          x = y.name
-          newValue.push(x)
-        }
-      })
+    (fullArr || []).filter((x: any) => {
+      if(value === x.id) {
+        newValue = x.name
+        console.log(newValue)
+      }
     })
 
-    const index = newValue.indexOf('Science Fiction');
-    if (index !== -1) {
-      newValue[index] = 'SciFi';
+    if(newValue === 'Science Fiction') {
+      newValue = 'SciFi';
+    }
+    if(newValue === 'Sci-Fi & Fantasy') {
+      newValue = 'SciFi & Fantasy';
     }
 
-    if(newValue) return newValue.join(spc)
+    if(newValue) return newValue
     
     return null
   }

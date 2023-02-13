@@ -15,6 +15,9 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
   browseTerm: string = '';
   moviesGenres: Genres[] = [];
   tvGenres: Genres[] = [];
+  headerMovies: boolean = false;
+  headerTvShow: boolean = false;
+  headerPeaople: boolean = false;
 
   constructor(
     private _searchService: SearchService, 
@@ -30,9 +33,10 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
   getBrowseItems() {
     this._searchService.searchItems.subscribe((data: any) => {
       if(data == null) return
-      console.log(data) //!!!!!!!!!!!!!!!
       this.browseItems = data;
+      console.log(this.browseItems)
       this.browseTerm = this._searchService.getSearchTerm();
+      this.hideHeader()
       this._cdr.detectChanges();
     })
   }
@@ -47,6 +51,13 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
     this._genresService.getTvGenres().subscribe((data: any) => {
       this.tvGenres = data;
     });
+  }
+
+  hideHeader() {
+    const arr = this.browseItems
+    if(arr.some((x: any) => x.release_date)) this.headerMovies = true;
+    if(arr.some((x: any) => x.first_air_date)) this.headerTvShow = true;
+    if(arr.some((x: any) => x.known_for_department)) this.headerPeaople = true;
   }
 
   ngOnDestroy() {

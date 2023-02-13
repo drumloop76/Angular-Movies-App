@@ -83,9 +83,12 @@
                             <span *ngIf="r.first_air_date">
                                 {{ (r.first_air_date | date:'yyyy') }}
                             </span>
-                            <div>
-                                <p class="m-0 position-absolute bottom-0 start-0">
-                                    {{ r.genre_ids | genreName: moviesGenres: tvGenres }}
+                            <div class="info-genres d-flex position-absolute bottom-0 start-0">
+                                <p 
+                                    class="m-0 pe-2"
+                                    *ngFor="let genre of r.genre_ids"
+                                >
+                                    {{ genre | genreName: moviesGenres: tvGenres }}
                                 </p>
                             </div>
                         </div>

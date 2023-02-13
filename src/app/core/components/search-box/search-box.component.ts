@@ -98,7 +98,7 @@ export class SearchBoxComponent implements OnInit {
     } else if (event.item.first_air_date) {
       this.router.navigate(['/shows', event.item.id]);
       this.onItemSelected();
-    }else if (event.item.known_for_department) {
+    } else if (event.item.known_for_department) {
       this.router.navigate(['/persons', event.item.id]);
       this.onItemSelected();
     } else {

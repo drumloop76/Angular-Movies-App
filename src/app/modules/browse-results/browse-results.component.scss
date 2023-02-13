@@ -9,19 +9,65 @@ span {
 
 .movie-item {
     width: 100%;
-    background-color: $dark-300;
-    // border: 1px solid red;
+    background: $dark-400;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
     .img-container {
         position: relative;
         min-width: 65px;
         height: 90px;
+    }
+    .info-container {
+        overflow: hidden;
+        .info-title {
+            display: flex;
+            align-items: center;
+            .title {
+                color: $white;
+                font-size: 18px;
+                font-weight: 400;
+                letter-spacing: .7px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            span {
+                @include spanSearchText;
+            }
+        }
+        .info-vote {
+            margin-top: 5px;
+            span {
+                @include spanSearchText;
+            }
+        }
+        .info-genres {
+            a {
+                @include spanSearchText;
+                font-size: 16px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                color: rgb(55, 141, 238);
+                cursor: pointer;
+                &:hover {
+                    color: rgb(110, 176, 252);
+                }
+            }
+            
+        }
+    }
+    &:hover {
+        background: rgba($dark-400, 70%);
         -webkit-transition: all 0.2s ease-out;
         transition: all 0.2s ease-out;
-    }
-    h5 span {
-        font-size: 16px;
-        font-weight: 400;
-        margin-left: 10px;
+        .info-container .info-title .title {
+            color: $gold-400;
+            span {
+                color: $gold-400;
+            }
+            
+        }
     }
 }
 
