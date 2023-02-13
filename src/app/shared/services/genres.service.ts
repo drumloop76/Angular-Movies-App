@@ -13,7 +13,6 @@ export class GenresService {
   getMoviesGenres(): Observable<any> {
     return this.http.get(`${environment.baseUrl}genre/movie/list?api_key=${environment.apiKey}&language=${environment.language}`)
       .pipe(map((data: any) => {
-        // console.log(data.genres)
         return data.genres
       }));
   }
@@ -21,7 +20,6 @@ export class GenresService {
   getTvGenres(): Observable<any> {
     return this.http.get(`${environment.baseUrl}genre/tv/list?api_key=${environment.apiKey}&language=${environment.language}`)
       .pipe(map((data: any) => {
-        // console.log(data.genres)
         return data.genres
       }));
   }

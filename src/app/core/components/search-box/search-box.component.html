@@ -40,6 +40,7 @@
                 [resultFormatter]="formatter"
                 [resultTemplate]="rt"
                 placeholder="Search..."
+                (selectItem)="onSelectItem($event)"
             />
             <ng-template 
                 #rt 
@@ -49,7 +50,6 @@
             >
                 <div 
                     class="w-100 d-flex" 
-                    [routerLink]="r.title ? ['/movie', r.id] : r.name ? ['/series', r.id] : ['/person', r.id]"
                     (click)="closeInsideSearch()"
                 >
                     <div class="img-container">
@@ -70,7 +70,7 @@
                         />
                     </div>            
                     <div class="info-container position-relative w-100 d-flex flex-column">
-                        <div *ngIf="r.title || r.name" class="info-title d-flex flex-wrap mb-2">
+                        <div *ngIf="r.release_date || r.first_air_date" class="info-title d-flex flex-wrap mb-2">
                             <ngb-highlight                                 
                                 class="title me-2" 
                                 [result]="r.title || r.name" 
@@ -84,7 +84,9 @@
                                 {{ (r.first_air_date | date:'yyyy') }}
                             </span>
                             <div>
-                                <p class="m-0 position-absolute bottom-0 start-0">{{ r.genre_ids | genreName: moviesGenres: tvGenres }}</p>
+                                <p class="m-0 position-absolute bottom-0 start-0">
+                                    {{ r.genre_ids | genreName: moviesGenres: tvGenres }}
+                                </p>
                             </div>
                         </div>
                         <div >
@@ -114,3 +116,5 @@
         </div>
     </div>
 </div>
+
+

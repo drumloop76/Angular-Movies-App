@@ -7,7 +7,7 @@ import { Genres } from '../models/genres.model';
 
 export class GenreNamePipe implements PipeTransform {
   transform(value: any[], arr1: any[], arr2: any[], spc = ', '): any {
-    let newValue: any;
+    let newValue: any[] = [];
     const fullArr = [ ...arr1, ...arr2];
 
     value.map((x: any) => {
@@ -19,10 +19,10 @@ export class GenreNamePipe implements PipeTransform {
       })
     })
 
-    // const index = newValue.indexOf('Science Fiction');
-    // if (index !== -1) {
-    //   newValue[index] = 'SciFi';
-    // }
+    const index = newValue.indexOf('Science Fiction');
+    if (index !== -1) {
+      newValue[index] = 'SciFi';
+    }
 
     if(newValue) return newValue.join(spc)
     
