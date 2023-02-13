@@ -11,11 +11,10 @@ import { SearchService } from 'src/app/shared/services/search.service';
 })
 
 export class BrowseResultsComponent implements OnInit, OnDestroy {
-  browseItems: [] = [];
+  browseItems: any[] = [];
   browseTerm: string = '';
   moviesGenres: Genres[] = [];
   tvGenres: Genres[] = [];
-  // genresArr: Genres[] = []
 
   constructor(
     private _searchService: SearchService, 
@@ -26,16 +25,13 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
     this.getBrowseItems();
     this.getMoviesGenres();
     this.getTvGenres();
-    // this.setGenresArr()
-    // this.genresArr = [...this.moviesGenres, ...this.tvGenres]
-    // console.log(this.genresArr)
   }
 
   getBrowseItems() {
     this._searchService.searchItems.subscribe((data: any) => {
       if(data == null) return
+      console.log(data) //!!!!!!!!!!!!!!!
       this.browseItems = data;
-      // console.log(this.browseItems)
       this.browseTerm = this._searchService.getSearchTerm();
       this._cdr.detectChanges();
     })
@@ -53,15 +49,8 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
     });
   }
 
-  
-
-  // setGenresArr() {
-  //   this.genresArr = [...this.moviesGenres, ...this.tvGenres]
-  //   console.log(this.genresArr)
-  // }
-
   ngOnDestroy() {
-    // this.
+    
   }
   
 }

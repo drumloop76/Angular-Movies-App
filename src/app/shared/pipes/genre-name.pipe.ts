@@ -4,12 +4,11 @@ import { Genres } from '../models/genres.model';
 @Pipe({
   name: 'genreName'
 })
-export class GenreNamePipe implements PipeTransform {
 
-  transform(value: Genres[], array1: Genres[], array2: Genres[], sep = ', '): any {
-    let newValue: Genres[] = [];
-    const fullArr = [ ...array1, ...array2];
-    // const fullArr = [ array1, array2];
+export class GenreNamePipe implements PipeTransform {
+  transform(value: any[], arr1: any[], arr2: any[], spc = ', '): any {
+    let newValue: any;
+    const fullArr = [ ...arr1, ...arr2];
 
     value.map((x: any) => {
       (fullArr || []).filter((y: any) => {
@@ -20,7 +19,12 @@ export class GenreNamePipe implements PipeTransform {
       })
     })
 
-    if(newValue) return newValue.join(sep)
+    // const index = newValue.indexOf('Science Fiction');
+    // if (index !== -1) {
+    //   newValue[index] = 'SciFi';
+    // }
+
+    if(newValue) return newValue.join(spc)
     
     return null
   }

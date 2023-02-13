@@ -3,6 +3,8 @@ import { EMPTY, Observable, of, OperatorFunction } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, map, tap, switchMap } from 'rxjs/operators';
 import { Animations } from 'src/app/shared/animations/animations';
 import { searchOptions } from 'src/app/shared/helpers/helpers';
+import { Genres } from 'src/app/shared/models/genres.model';
+import { GenresService } from 'src/app/shared/services/genres.service';
 import { SearchService } from 'src/app/shared/services/search.service';
 
 @Component({
@@ -19,10 +21,14 @@ export class SearchBoxComponent implements OnInit {
   searchSelector = "Select";
   searching = false;
 	searchFailed = false;
+  moviesGenres: Genres[] = [];
+  tvGenres: Genres[] = [];
 
   showSearchBox!: Observable<boolean>;
 
-  constructor(private searchService: SearchService) {
+  constructor(
+    private searchService: SearchService,
+    private _genresService: GenresService) {
     this.searchOptions = searchOptions;
   }
 
@@ -40,6 +46,18 @@ export class SearchBoxComponent implements OnInit {
     this.searchSelector = label;
   }
 
+  getMoviesGenres() {
+    this._genresService.getMoviesGenres().subscribe((data: any) => {
+      this.moviesGenres = data;
+    });
+  }
+
+  getTvGenres() {
+    this._genresService.getTvGenres().subscribe((data: any) => {
+      this.tvGenres = data;
+    });
+  }
+
   // ------------------- API ---------------------------
   model!: Observable<any>;
 
@@ -53,6 +71,7 @@ export class SearchBoxComponent implements OnInit {
 			switchMap((term) =>
         term.length < 2 ? [] : this.searchService.search(term).pipe(
 					tap(() => this.searchFailed = false),
+          tap((x) => console.log(x)),
           tap(res => this.searchService.getBrowseItems(res)),
           map(x => x.slice(0, 10)),
 					catchError(() => {

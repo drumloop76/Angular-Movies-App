@@ -4,7 +4,7 @@
         <div class="browse-wrapper">
             <h2 class="my-5">Movies</h2>
             <div *ngFor="let item of browseItems" class="">
-                <div *ngIf="item['media_type'] === 'movie'" class="movie-item d-flex px-3 py-2 my-2">
+                <div *ngIf="item['title'] || item['media_type'] === 'movie'" class="movie-item d-flex px-3 py-2 my-2">
                     <div class="img-container mb-auto">                        
                         <img 
                             *ngIf="item['poster_path']" 
@@ -27,14 +27,14 @@
                             {{ item['title'] }} <span>( {{ item['release_date'] | date:"yyyy" }} )</span>
                         </h5>
                         <fa-icon [icon]="['fas', 'star']"></fa-icon>
-                        <span>{{item['vote_average']}}</span>  
-                        <p>{{ item['genre_ids'] | genreName: moviesGenres: tvGenres }}</p>
+                        <span>{{ item['vote_average'] | number:'1.1-1'}}</span>  
+                        <!-- <p>{{ item['genre_ids'] | genreName: moviesGenres: tvGenres }}</p> -->
                     </div>
                 </div>
             </div>
             <h2 class="my-5">TV Shows</h2>
             <div *ngFor="let item of browseItems" class="">
-                <div *ngIf="item['media_type'] === 'tv'">
+                <div *ngIf="item['first_air_date'] || item['media_type'] === 'tv'">
                     <div class="movie-item d-flex px-3 py-2 my-2">
                         <div class="img-container position-relative mb-auto">                        
                             <img 
@@ -65,7 +65,7 @@
             </div>
             <h2 class="my-5">People</h2>
             <div *ngFor="let item of browseItems" class="">
-                <div *ngIf="!(item['media_type'] === 'movie' || item['media_type'] === 'tv')">
+                <div *ngIf="item['known_for_department']">
                     <div class="movie-item d-flex px-3 py-2 my-2">
                         <div class="img-container position-relative mb-auto">                        
                             <img 
