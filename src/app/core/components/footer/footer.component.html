@@ -1,1 +1,82 @@
-<p>footer works!</p>
+<footer class="container-fluid">
+    <div class="container-xxl pt-4">
+        <div class="media-container col mx-auto pt-2 pb-4 d-flex justify-content-center align-items-center">
+            <a
+                *ngFor="let link of mediaLinks"
+                class="media-link mx-lg-3 mx-2 rounded-circle" 
+                href={{link.route}} 
+                rel="nofollow" 
+                target="_blank"
+            >
+                <fa-icon [icon]="[link.iconPrefix, link.iconName]"></fa-icon>
+            </a>
+        </div>
+        <div class="content-wrapper container-fluid d-md-flex px-5">
+            <div class="logo-container text-center text-md-start col-md-5 col-lg-6 mb-5 me-md-5 me-lg-2 me-xl-0 ">
+                <h3 class="fw-bold mb-4 mb-md-4">
+                    SciFi'z
+                </h3>
+                <p class="m-0 pe-md-2 pe-lg-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi repudiandae suscipit
+                    voluptates sit iusto fuga.
+                </p>
+            </div>
+
+            <div class="links-container text-center text-md-start ms-md-4 ms-xl-5 col-md-3 mb-5 d-flex justify-content-center justify-content-md-start align-items-center align-items-md-start flex-column">
+                <h6 class="header text-uppercase fw-bold mb-4">
+                    Links
+                </h6>
+                <ul >
+                    <li>
+                        <a [routerLink]="['/home']">Home</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/about']">About Us</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/movies']">Movies</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/shows']">TV Shows</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/person']">Persons</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="contact-container text-center text-md-start col-md-3 mb-5 d-flex justify-content-center justify-content-md-start align-items-center align-items-md-start flex-column">
+                <h6 class="header text-uppercase fw-bold mb-4">
+                    Contact
+                </h6>
+                <ul>
+                    <li>
+                        <a [routerLink]="['/contact']">
+                            Contact Us
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['login']">
+                            Log In
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['sign-up']">
+                            Sign Up
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="foot-copy text-center pt-4 pt-md-2 pb-3">
+        © 2023 Copyright:
+        <a href="https://github.com/drumloop76" class=" fw-bold">Vladimir Stojkovic</a>
+    </div>
+</footer>
+
+
+
+
+
+

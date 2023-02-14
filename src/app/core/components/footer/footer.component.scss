@@ -1,0 +1,128 @@
+@use 'abstracts' as *;
+
+footer {
+    background: $black;
+}
+
+a, p, div {
+    color: $light-300;
+}
+
+.logo-container h3 {
+    @include logo;
+}
+
+.media-container {
+    margin-bottom: 30px;
+    .media-link {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-color: $dark-900;
+            transform: scale(0);
+            transition: all .2s ease-out;
+            z-index: 1;
+        }
+        &:hover {
+            &::after {
+                transform: scale(1.1);
+                transition: transform .2s ease-out;
+            }
+            fa-icon {
+                color: $white;
+                transform: scale(1.2);
+                transition: transform .2s ease-out;
+            }
+        }
+        fa-icon {
+            color: $light-300;
+            font-size: 20px;
+            z-index: 100;
+            transition: transform .2s ease-out;
+        }
+    }
+}
+
+.links-container,
+.contact-container {
+    .header {
+        position: relative;
+        color: $white;
+        letter-spacing: .8px;
+        font-size: 17px;
+        &::after {
+            position: absolute;
+            content: '';
+            width: 80%;
+            height: 2px;
+            left: 0;
+            bottom: -4px;
+            background: $red-400;
+            transition: all .2s ease-out;
+        }
+        
+    }
+    ul li {
+        padding: 10px;
+        @include media-above(md) {
+            padding: 10px 10px 10px 0;
+        }
+        a { 
+            padding: 10px 0 5px 0;
+            position: relative;
+            width: 100%;
+            margin-bottom: 10px;
+            @include media-above(md) {
+                transition: padding .2s ease;
+                padding: 6px 50px 6px 0;
+                &::before {
+                    display: none;
+                }
+            }
+            &::before {
+                @include linkUnderline;
+                bottom: 2px;
+            }
+            &:hover {
+                color: $white;
+                &::before {
+                    @include linkUnderline-show;
+                }
+                @include media-above(md) {
+                    padding-left: 8px;
+                    transition: padding .2s ease;
+                    &::before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    &:hover {
+        .header::after {
+            background: $red-300;
+            width: 100%;
+            transition: all .2s ease-out;
+        }
+        
+    }
+}
+
+.foot-copy {
+    font-size: 14px;
+    a {
+        color: $blue-400;
+        &:hover {
+            color: $blue-300;
+        }
+    }
+}
