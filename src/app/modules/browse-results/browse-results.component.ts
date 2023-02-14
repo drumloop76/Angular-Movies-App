@@ -44,12 +44,14 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
   getMoviesGenres() {
     this._genresService.getMoviesGenres().subscribe((data: any) => {
       this.moviesGenres = data;
+      this._cdr.detectChanges();
     });
   }
 
   getTvGenres() {
     this._genresService.getTvGenres().subscribe((data: any) => {
       this.tvGenres = data;
+      this._cdr.detectChanges();
     });
   }
 
