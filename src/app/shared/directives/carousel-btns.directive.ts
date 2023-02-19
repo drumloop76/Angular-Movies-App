@@ -37,13 +37,13 @@ export class CarouselBtnsDirective implements AfterViewInit {
     const nodeNextBtn = swiper.navigation.nextEl;
     const nodePrevBtn = swiper.navigation.prevEl;
     
-    this.renderNewStyles(nodeNextBtn, this.newStyles);
-    this.renderNewStyles(nodePrevBtn, this.newStyles);
+    this.renderStyles(nodeNextBtn, this.newStyles);
+    this.renderStyles(nodePrevBtn, this.newStyles);
 
     this.onHoverBtns(nodeNextBtn, nodePrevBtn);
   }
 
-  renderNewStyles(x:any, style:any) {
+  renderStyles(x:any, style:any) {
     Object.keys(style).forEach(ns => {
       this.renderer.setStyle(
         x, `${ns}`, style[ns]
@@ -51,26 +51,18 @@ export class CarouselBtnsDirective implements AfterViewInit {
     });
   }
 
-  renderHoverStyles(x:any, style:any) {
-    Object.keys(style).forEach(hs => {
-      this.renderer.setStyle(
-        x, `${hs}`, style[hs]
-      );
-    });
-  }
-
   onHoverBtns(a:any, b:any) {
     this.unlisteneNext = this.renderer.listen(a, "mouseover", event => {
-      this.renderHoverStyles(a, this.hoverStyles);
+      this.renderStyles(a, this.hoverStyles);
     });
     this.unlisteneNext = this.renderer.listen(a, "mouseleave", event => {
-      this.renderNewStyles(a, this.newStyles);
+      this.renderStyles(a, this.newStyles);
     });
     this.unlistenePrev = this.renderer.listen(b, "mouseover", event => {
-      this.renderHoverStyles(b, this.hoverStyles);
+      this.renderStyles(b, this.hoverStyles);
     });
     this.unlistenePrev = this.renderer.listen(b, "mouseleave", event => {
-      this.renderNewStyles(b, this.newStyles);
+      this.renderStyles(b, this.newStyles);
     });
   }
 

@@ -69,6 +69,16 @@
 
 .navbar-brand {
     @include logo;
+    display: none;
+    @include media-above(xs) {
+        display: block;
+        position: absolute;
+        left: 70px;
+    }
+    @include media-above(sm) {
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 .navbar-container--right {
