@@ -1,0 +1,12 @@
+@use 'abstracts' as *;
+
+h1 {
+    color: white;
+}
+
+.carousel-wrapper {
+    background-color: $black;
+    .carousel-container {
+        max-width: 1400px;
+    }
+}

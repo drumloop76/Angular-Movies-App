@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -32,6 +32,8 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 import { SearchBoxComponent } from './core/components/search-box/search-box.component';
 import { SharedModule } from './shared/shared.module';
+import { register } from 'swiper/element/bundle';
+import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-carousel.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { SharedModule } from './shared/shared.module';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    HeroCarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -65,13 +68,15 @@ import { SharedModule } from './shared/shared.module';
     provideStorage(() => getStorage())
   ],
   providers: [
-    provideImgixLoader('https://image.tmdb.org/t/p/w500')
+    provideImgixLoader('https://image.tmdb.org/t/p/')
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AppModule { 
   constructor(library: FaIconLibrary) {
+    register();
     library.addIcons(
       faBars,
       faXmark,

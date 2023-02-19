@@ -55,7 +55,7 @@
                     <div class="img-container">
                         <img 
                             *ngIf="r.poster_path || r.profile_path" 
-                            [ngSrc]="r.poster_path || r.profile_path" 
+                            [ngSrc]="'w500' + r.poster_path || r.profile_path" 
                             class="me-1 position-absolute" 
                             fill
                             [alt]="(r.title || r.name) + ' poster image'"

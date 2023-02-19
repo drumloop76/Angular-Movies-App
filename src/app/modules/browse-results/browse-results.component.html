@@ -9,7 +9,7 @@
                         <img 
                             *ngIf="item['poster_path']" 
                             class="me-1 position-absolute"
-                            [ngSrc]="item['poster_path']" 
+                            [ngSrc]="'w500' + item['poster_path']" 
                             [alt]="item['title'] + ' poster image'" 
                             fill
                         />
@@ -51,7 +51,7 @@
                         <img 
                             *ngIf="item['poster_path']" 
                             class="me-1 position-absolute"
-                            [ngSrc]="item['poster_path']" 
+                            [ngSrc]="'w500' + item['poster_path']" 
                             [alt]="item['title'] + ' poster image'" 
                             fill
                         />
@@ -92,7 +92,7 @@
                         <img 
                             *ngIf="item['profile_path']" 
                             class="me-1 position-absolute"
-                            [ngSrc]="item['profile_path']" 
+                            [ngSrc]="'w500' + item['profile_path']" 
                             [alt]="item['title'] + ' poster image'" 
                             fill
                         />
