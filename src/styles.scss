@@ -1,14 +1,6 @@
 @use './styles/abstracts' as *;
 @import './styles/bootstrap/bootstrap';
 
-
-
-$themeColor: $red !default;
-$navigationTopOffset: 20% !default;
-$navigation-size: 44px;
-$navigation-top-offset: 50%;
-@import '../node_modules/swiper/swiper';
-
 html {
     height: 100%;
 }
@@ -35,9 +27,11 @@ a {
     }
 }
 
+h1, h2 {
+    color: $white;
+}
+
 p {
-    // color: $white; //!!!
-    // color: $dark-link-color;
     color: $light-200;
 }
 

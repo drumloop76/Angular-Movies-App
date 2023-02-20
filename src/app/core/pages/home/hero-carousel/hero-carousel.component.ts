@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Genres } from 'src/app/shared/models/genres.model';
 import { NowPlayingMovies } from 'src/app/shared/models/nowPlayingMovies';
 
 @Component({
@@ -8,5 +9,7 @@ import { NowPlayingMovies } from 'src/app/shared/models/nowPlayingMovies';
 })
 export class HeroCarouselComponent {
   @Input() movies: NowPlayingMovies[] = [];
+  @Input() moviesGenres: Genres[] = [];
+  @Input() tvGenres: Genres[] = [];
   
 }

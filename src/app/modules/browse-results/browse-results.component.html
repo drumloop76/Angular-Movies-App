@@ -36,9 +36,9 @@
                         <div class="info-genres d-flex position-absolute bottom-0 start-0">
                             <a 
                                 class="m-0 pe-2"
-                                *ngFor="let genre of item.genre_ids"
+                                *ngFor="let genre of item.genre_ids; let lastEl = last"
                             >
-                                {{ genre | genreName: moviesGenres: tvGenres }},
+                                {{ genre | genreName: moviesGenres: tvGenres }}{{ lastEl ? '' : ', ' }}
                             </a>
                         </div>
                     </div>

@@ -13,7 +13,6 @@ export class GenreNamePipe implements PipeTransform {
     (fullArr || []).filter((x: any) => {
       if(value === x.id) {
         newValue = x.name
-        console.log(newValue)
       }
     })
 

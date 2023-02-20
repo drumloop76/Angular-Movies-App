@@ -1,7 +1,12 @@
 <div class="container-fluid">
     <div class="carousel-wrapper row">
         <div class="carousel-container col mx-auto">
-            <app-hero-carousel [movies]="nowPlayingMovies"></app-hero-carousel>
+            <app-hero-carousel 
+                [movies]="nowPlayingMovies"
+                [moviesGenres]="moviesGenres"
+                [tvGenres]="tvGenres"
+            >
+            </app-hero-carousel>
         </div>
     </div>
     <div class="container-xxl">

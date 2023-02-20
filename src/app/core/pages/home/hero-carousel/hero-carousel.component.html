@@ -2,8 +2,7 @@
     class="mx-1 mx-lg-0" 
     navigation="true"
     loop="true"
-    autoplay-delay="5000"
-    speed="500"
+    
 >
     <swiper-slide *ngFor="let mov of movies" class="d-lg-flex">
         <div class="carousel-img-container">
@@ -17,20 +16,27 @@
                 priority
             >
         </div>
-        <div class="carousel-caption align-self-stretch" [routerLink]="['/movie', mov.id]">
-            <div>
-                <h2 class="title">
-                    {{mov?.title}}
-                </h2>
+        <div class="carousel-caption mb-2 mt-2 mt-lg-0" [routerLink]="['/movie', mov.id]">
+            <div class="title">
+                <h2>{{ mov?.title }}</h2>
+            </div>
+            <div class="info-genres d-flex mb-3 mb-lg-4">
+                <p
+                    class="m-0 pe-2"
+                    *ngFor="let genre of mov?.genre_ids | slice:0:3; let lastEl = last"
+                >
+                    {{ genre | genreName: moviesGenres: tvGenres }}{{ lastEl ? '' : ', ' }}
+                </p>
             </div>
             <div class="info-container">
-                <div class="info d-inline-flex">
-                    <span>{{ mov?.release_date | date:"yyyy" }}</span>
-                    <div class="vr"></div>
+                <div class="info d-inline-flex mb-3">
                     <fa-icon [icon]="['fas', 'star']"></fa-icon>
                     <span>{{mov?.vote_average}}/10</span>
                     <div class="vr"></div>
                     <span>{{ mov?.vote_count }} Reviews</span>
+                </div>
+                <div class="overview d-none d-md-block">
+                    <span>{{mov.overview}}</span>
                 </div>
             </div>
         </div>

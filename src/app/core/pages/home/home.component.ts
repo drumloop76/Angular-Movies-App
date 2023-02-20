@@ -1,5 +1,7 @@
 import { Component, Output } from '@angular/core';
+import { Genres } from 'src/app/shared/models/genres.model';
 import { NowPlayingMovies, NowPlayingMoviesData } from 'src/app/shared/models/nowPlayingMovies';
+import { GenresService } from 'src/app/shared/services/genres.service';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 
 @Component({
@@ -10,12 +12,19 @@ import { MoviesService } from 'src/app/shared/services/movies.service';
 export class HomeComponent {
   @Output() nowPlayingMovies: NowPlayingMovies[] = [];
   @Output() popularMovies: [] = [];
+  @Output() moviesGenres: Genres[] = [];
+  @Output() tvGenres: Genres[] = [];
 
-  constructor(private _movieService: MoviesService) { }
+  constructor(
+    private _movieService: MoviesService, 
+    private _genresService: GenresService,
+  ) { }
 
   ngOnInit() {
     this.getNowPlaying();
-    this.getPopularMovies()
+    this.getPopularMovies();
+    this.getMoviesGenres();
+    this.getTvGenres();
   }
 
   getNowPlaying(): void {
@@ -29,4 +38,18 @@ export class HomeComponent {
       this.popularMovies = data.results.slice(0, 16);
     });
   }
+
+  getMoviesGenres() {
+    this._genresService.getMoviesGenres().subscribe((data: any) => {
+      this.moviesGenres = data;
+      
+    });
+  }
+
+  getTvGenres() {
+    this._genresService.getTvGenres().subscribe((data: any) => {
+      this.tvGenres = data;
+    });
+  }
+
 }
