@@ -1,8 +1,9 @@
-<swiper-container appCarouselBtns
-    class="mx-1 mx-lg-0" 
-    navigation="true"
-    loop="true"
-    
+<swiper-container 
+    appSwiperCarousel
+    class="mx-2"
+    [config]="config" 
+    [params]="params"
+    init="false"
 >
     <swiper-slide *ngFor="let mov of movies" class="d-lg-flex">
         <div class="carousel-img-container">
@@ -16,7 +17,7 @@
                 priority
             >
         </div>
-        <div class="carousel-caption mb-2 mt-2 mt-lg-0" [routerLink]="['/movie', mov.id]">
+        <div class="carousel-caption mb-2" [routerLink]="['/movie', mov.id]">
             <div class="title">
                 <h2>{{ mov?.title }}</h2>
             </div>

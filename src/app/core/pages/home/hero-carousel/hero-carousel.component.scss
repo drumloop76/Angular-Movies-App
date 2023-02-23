@@ -14,17 +14,41 @@ swiper-container {
     @include media-above(lg) {
         width: 70%;
     }
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        content: "";
+        background-image: linear-gradient(
+            to top,
+            $black,
+            $black .5%,
+            transparent 15%,
+            transparent 100%
+        );
+        @include media-above(lg) {
+            background-image: linear-gradient(
+                to left,
+                $black,
+                $black .5%,
+                transparent 15%,
+                transparent 100%
+            );
+        }
+    }
     img {
         max-inline-size: 100%;
         block-size: auto;
         aspect-ratio: 16/9;
-        @include media-above(lg) {
-        }
     }
 }
 
 .carousel-caption {
-    padding: .5rem 1rem;
+    background: $black;
+    padding: 0 1rem .5rem 1rem;
     cursor: pointer;
     @include media-above(lg) {
         position: relative;
@@ -32,6 +56,14 @@ swiper-container {
     }
     .title h2 {
         color: $white;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        @include media-above(lg) {
+            max-height: 200px;
+        }
     }
     .info-genres p {
         color: rgba(255, 255, 255, 0.8);
@@ -39,7 +71,7 @@ swiper-container {
     .info-container {
         .info {
             .vr {
-                color: $light-200;
+                color: $light-300;
                 opacity: 1;
                 margin: 0 10px;
                 padding-bottom: 0;
