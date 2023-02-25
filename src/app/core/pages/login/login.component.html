@@ -1,1 +1,117 @@
-<p>login works!</p>
+<div class="container-fluid py-5 px-3">
+    <div class="wrapper mx-auto pt-4">
+        <h2 class="header mb-5 text-center">Log In</h2>
+        <div class="row position-relative">
+            <div class="container-left col-12 col-md-6 px-3 px-sm-5 p-md-0 px-lg-4 pt-md-4 mb-5 mb-md-0">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group mb-4">
+                        <div class="form-floating mb-5">
+                            <input 
+                                type="email" 
+                                class="form-control"
+                                id="floatingEmail" 
+                                formControlName="email"
+                                placeholder="Email"
+                                [ngClass]="{ 'is-invalid': (f['email'].dirty || f['email'].touched) && f['email'].errors }"
+                            />
+                            <label for="floatingEmail">Email address</label>
+                            <div 
+                                *ngIf="(f['email'].dirty || f['email'].touched) && f['email'].errors" 
+                                class="invalid-feedback"
+                            >
+                                <div *ngIf="f['email'].errors['required']">
+                                    Email is required
+                                </div>
+                                <div *ngIf="f['email'].errors['pattern']">
+                                    Email is invalid
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-floating pass-container position-relative">
+                            <input 
+                                [type]="passTextType ? 'text' : 'password'"
+                                class="form-control" 
+                                id="floatingPassword" 
+                                formControlName="password"
+                                placeholder="Password"
+                                [ngClass]="{ 'is-invalid': (f['password'].dirty || f['password'].touched) && f['password'].errors }"
+                            />
+                            <label for="floatingPassword">Password</label>
+                            <span 
+                                class="eye-container position-absolute top-50 translate-middle" 
+                                (click)="togglePassTextType()"
+                            >
+                                <fa-icon *ngIf="!passTextType" [icon]="['far', 'eye']" ></fa-icon>
+                                <fa-icon *ngIf="passTextType" [icon]="['far', 'eye-slash']" ></fa-icon>
+                            </span>
+                            <div 
+                                *ngIf="(f['password'].dirty || f['password'].touched) && f['password'].errors" 
+                                class="invalid-feedback"
+                            >
+                                <div *ngIf="f['password'].errors['required']">
+                                    Password is required
+                                </div>
+                                <div *ngIf="f['password'].errors['pattern']">
+                                    Username must be at least 8 characters
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex justify-content-center mt-5">
+                        <button 
+                            type="submit" 
+                            class="btn mb-lg-3"  
+                            [disabled]="loginForm.invalid"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="divider d-none d-md-block position-absolute top-50 start-50 translate-middle py-2">
+                <span class="align-text-bottom">or</span>
+            </div>
+            <div class="divider-horizontal d-md-none mb-5">
+                <span class="align-text-bottom">or</span>
+            </div>
+
+            <div class="container-right text-center col-12 col-md-6 px-3 px-sm-5 p-md-0 px-lg-4 mb-3 mb-md-0">
+                <h4>Login with social</h4>
+                <div class="sign-social d-flex flex-column align-items-center">
+                    <a href="#" class="login-social-item">
+                        <span class=""></span>
+                        <span class="title">Login with Google</span>
+                    </a>
+                    <a href="#" class="login-social-item">
+                        <span class=""></span>
+                        <span class="title">Login with Facebook</span>
+                    </a>
+                    <a href="#" class="login-social-item">
+                        <span class=""></span>
+                        <span class="title">Login with Twitter</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="redirectTo mt-5 pb-5 text-center d-flex flex-column ">
+            <span class="p-dark"> 
+                Don't have an account? 
+                <span class="redirectLink" [routerLink]="['/sign-up']">
+                    Sign Up
+                </span>
+            </span>
+            <span class="p-dark mt-4"> 
+                <span class="p-dark redirectLink" [routerLink]="['/forgot-password']">
+                    Forgot Password?
+                </span>
+            </span>
+        </div>
+    </div>
+    
+
+    <!-- <button class="btn btn-outline-primary mb-2 me-2" (click)="deleteUserAccount()"></button> -->
+</div>

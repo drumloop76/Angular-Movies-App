@@ -26,6 +26,17 @@ $dropdown-padding-y: 0;
 $dropdown-item-padding-y: 0;
 $dropdown-item-padding-x: 0;
 
+$form-select-focus-width: 0;
+$form-select-indicator-color: $dark-900;
+$input-height-border: 0rem;
+$form-floating-padding-y: .9rem;
+$form-floating-height: add(50px, $input-height-border);
+$form-floating-line-height: 1;
+$form-floating-input-padding-t: 0;
+$form-floating-input-padding-b: 0;
+$form-floating-label-opacity: .8;
+$form-floating-label-transform: scale(.95) translateY(-2.7rem) translateX(-.75rem);
+
 @import "variables";
 @import "maps";
 @import "mixins";
@@ -53,8 +64,8 @@ $dropdown-item-padding-x: 0;
 // @import "alert";
 // @import "progress";
 // @import "list-group";
-// @import "close";
-// @import "toasts";
+@import "close";
+@import "toasts";
 // @import "modal";
 // @import "tooltip";
 // @import "popover";

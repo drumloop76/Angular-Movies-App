@@ -62,4 +62,46 @@ export class AuthService {
       //   // this.handleError(err)
       // })
   }
+  
+  // ------------------------------------------------------------------
+  sendEmailVerification(user: any) {
+    user.sendEmailVerification();
+  }
+
+  // ------------------------------------------------------------------
+  login(email: string,password: string) {
+    this.afAuth.signInWithEmailAndPassword(email, password)
+      .then(
+        (res) => {
+          if (res.user?.emailVerified == true) {
+            localStorage.setItem('token', 'true');
+            // this.getSessionTmdb();
+            // this.router.navigate(['/ngmovies/subscriptions']);
+          } else {
+            console.log('Confirm your account through email verification')
+            // this.openSnackBar(
+            //   'Confirm your account through email verification',
+            //   'X'
+            // );
+            this.sendEmailVerification(res.user);
+          }
+        },
+        (err) => {
+          if (err.code == 'auth/too-many-requests') {
+            console.log('Access to this account has been temporarily disabled due to many failed login attempts. Try again later')
+            // this.openSnackBar(
+            //   'Access to this account has been temporarily disabled due to many failed login attempts. Try again later',
+            //   'X'
+            // );
+            return;
+          }
+          console.log('The email adress or password is incorrect. Please try again')
+          // this.openSnackBar(
+          //   'The email adress or password is incorrect. Please try again',
+          //   'X'
+          // );
+          this.router.navigate(['/login']);
+        }
+      );
+  }
 }

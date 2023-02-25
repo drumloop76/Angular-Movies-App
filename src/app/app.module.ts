@@ -26,13 +26,8 @@ import { SignUpComponent } from './core/pages/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './core/pages/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './core/pages/verify-email/verify-email.component';
 
-// import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// import { faBars, faCaretDown, faMagnifyingGlass, faShareNodes, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
-// import { faUser } from '@fortawesome/free-regular-svg-icons';
-// import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 import { SearchBoxComponent } from './core/components/search-box/search-box.component';
 import { SharedModule } from './shared/shared.module';
-// import { register } from 'swiper/element/bundle';
 import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-carousel.component';
 
 @NgModule({
@@ -59,7 +54,6 @@ import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-caro
     HttpClientModule,
     NgbModule,
     NgOptimizedImage,
-    // FontAwesomeModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -74,22 +68,4 @@ import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-caro
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
-export class AppModule { 
-  // constructor(library: FaIconLibrary) {
-  //   register();
-  //   library.addIcons(
-  //     faBars,
-  //     faXmark,
-  //     faMagnifyingGlass,
-  //     faUser,
-  //     faShareNodes,
-  //     faYoutubeSquare,
-  //     faFacebook,
-  //     faTwitter,
-  //     faInstagram,
-  //     faGoogle,
-  //     faCaretDown,
-  //     faStar,
-  //   )
-  // }
-}
+export class AppModule { }

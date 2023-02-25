@@ -76,7 +76,7 @@
     }
 
     .form-control {
-        line-height: 35px;
+        // line-height: 35px;
     }
 
     .btn {
@@ -97,17 +97,19 @@
         // padding: 10px 10px;
         // top: 0;
         cursor: pointer;
-        top: 1px;
+        // top: 1px;
         right: 0;
         fa-icon {
             font-size: 20px;
+            color: t.$dark-900;
         }
     }
 }
 
 @mixin redirectTo {
     .redirectLink {
-        background: t.$light-400;
+        background: t.$light-200;
+        color: t.$dark-300;
         text-decoration: underline;
         font-weight: 500;
         cursor: pointer;
