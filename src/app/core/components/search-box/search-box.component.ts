@@ -8,12 +8,6 @@ import { Genres } from 'src/app/shared/models/genres.model';
 import { GenresService } from 'src/app/shared/services/genres.service';
 import { SearchService } from 'src/app/shared/services/search.service';
 
-export enum KEY_CODE {
-  ENTER = 13,
-  RIGHT_ARROW = 39,
-  LEFT_ARROW = 37
-}
-
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',

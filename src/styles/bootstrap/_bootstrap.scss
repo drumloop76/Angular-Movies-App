@@ -7,6 +7,14 @@ $body-bg: rgba($black-blue, 90%);
 
 $grid-gutter-width: 0;
 
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1400px
+);
+
 $link-decoration: none;
 $link-color: v.$dark-link-color;
 $link-hover-color: $white;

@@ -18,6 +18,7 @@ export const environment = {
   language: 'en-US',
   region: 'US',
   sciFiGenre: '878',
+  tvSciFiGenre: '10765',
 };
 
 /*

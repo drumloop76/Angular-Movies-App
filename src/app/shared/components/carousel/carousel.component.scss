@@ -1,0 +1,60 @@
+@use 'abstracts' as *;
+
+swiper-container {
+    swiper-slide {
+        height: 100%;
+        background: $black-blue;
+        &:hover {
+            .carousel-img-container img {
+                transform: scale(1.05);
+                transition: transform .3s ease;
+            }
+        }
+    }
+}
+
+.carousel-img-container {
+    overflow: hidden;
+    cursor: pointer;
+    img {
+        max-inline-size: 100%;
+        block-size: auto;
+        aspect-ratio: 2/3;
+        transition: transform .3s ease;
+    }
+}
+.info-container {
+    position: relative;
+    overflow: hidden;
+    .title-container {
+        overflow: hidden;
+        color: $white;
+        height: 2.5rem;
+        margin-bottom: 0;
+        padding: 2px 5px;
+        text-overflow: ellipsis;
+        cursor: pointer;
+    }  
+    .info {
+        padding: 4px 2px 2px 5px;
+        .title-container {
+            overflow: hidden;
+            height: 2.5rem;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+        .vr {
+            color: $light-300;
+            opacity: 1;
+            margin: 0 10px;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        fa-icon {
+            color: $gold-500;
+            margin-right: 6px;
+            padding-top: 3px;
+            font-size: 12px;
+        }
+    } 
+}

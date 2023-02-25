@@ -12,12 +12,9 @@ export class SwiperCarouselDirective {
 
   constructor(private el: ElementRef<HTMLElement>) {
     this.swiperEl = el.nativeElement;
-    // console.log(this.swiperEl)
   }
 
   ngAfterViewInit() {
-    // console.log(this.swiperEl)
-
     Object.assign(this.swiperEl, this.config);
     Object.assign(this.swiperEl, this.params);
     

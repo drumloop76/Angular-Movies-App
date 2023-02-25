@@ -5,7 +5,7 @@
     [params]="params"
     init="false"
 >
-    <swiper-slide *ngFor="let mov of movies" class="d-lg-flex">
+    <swiper-slide *ngFor="let mov of movies | slice:0:8" class="d-lg-flex">
         <div class="carousel-img-container">
             <img 
                 class=""

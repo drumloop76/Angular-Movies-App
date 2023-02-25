@@ -1,6 +1,6 @@
 <div class="container-fluid">
-    <div class="carousel-wrapper row">
-        <div class="carousel-container col mx-auto">
+    <div class="carousel-wrapper hero-carousel row">
+        <div class="container-xxl carousel-container col mx-auto">
             <app-hero-carousel 
                 [movies]="nowPlayingMovies"
                 [moviesGenres]="moviesGenres"
@@ -10,10 +10,33 @@
         </div>
     </div>
     <div class="container-xxl">
-        <div class="row">
-            <div class="col">
-                <h1>Current Popular Movies</h1>
-            </div>
+        <div class="col px-4">
+            <h2 class="mt-5 mb-4">Current Popular Movies</h2>
+        </div>
+    </div>
+    <div class="container-xxl">
+        <div class="carousel-container col mx-auto px-4">
+            <app-carousel [items]="popularMovies"></app-carousel>
+        </div>
+    </div>
+    <div class="container-xxl">
+        <div class="col px-4">
+            <h2 class="mt-5 mb-4">Current Popular Tv Shows</h2>
+        </div>
+    </div>
+    <div class="container-xxl">
+        <div class="carousel-container col mx-auto px-4">
+            <app-carousel [items]="popularTvShows"></app-carousel>
+        </div>
+    </div>
+    <div class="container-xxl">
+        <div class="col px-4">
+            <h2 class="mt-5 mb-4">Popular Celebrities</h2>
+        </div>
+    </div>
+    <div class="container-xxl">
+        <div class="carousel-container col mx-auto px-4">
+            <app-carousel [items]="popularPeople" [person]="personMovieTitles"></app-carousel>
         </div>
     </div>
 </div>

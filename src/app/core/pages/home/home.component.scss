@@ -4,9 +4,10 @@ h1 {
     color: white;
 }
 
-.carousel-wrapper {
+.hero-carousel {
     background-color: $black;
-    .carousel-container {
-        max-width: 1400px;
-    }
+}
+
+.carousel-container {
+    max-width: 1400px;
 }

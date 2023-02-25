@@ -1,1 +1,53 @@
-<p>carousel works!</p>
+<swiper-container 
+    appSwiperCarousel
+    [config]="config" 
+    [params]="params"
+    init="false"
+>
+    <swiper-slide 
+        *ngFor="let item of items | slice:0:16" 
+        class=" d-flex flex-column justify-content-between"
+    >        
+        <div class="carousel-img-container">
+            <img 
+                class="w-100"
+                [ngSrc]="item['poster_path'] ? 'w500' + item['poster_path'] : 'w500' + item['profile_path']" 
+                [alt]="item['title'] ? item['title'] + ', currently popular movies carousel image' 
+                    : item['first_air_date'] ? item['name'] + ', currently popular tv show carousel image' 
+                    : item['name'] + ', popular celebrities carousel image'"
+                width="500"
+                height="750"
+                ngSrcset="200w, 400w, 600w, 800w, 1000w, 1200w, 1600w, 2000w, 3000w"
+                priority
+            >
+            <img 
+                *ngIf="!item['poster_path'] && !item['profile_path']" 
+                class="w-100"
+                src="assets/images/no_img.png" 
+                alt="item['title'] ? item['title'] + ', currently popular movies carousel image holder' 
+                    : item['first_air_date'] ? item['name'] + ', currently popular tv show carousel image holder' 
+                    : item['name'] + ', popular celebrities carousel image holder'"
+                width="500"
+                height="750"
+            />
+        </div>
+        <div class="info-container pt-1">
+            <div class="title-container lh-sm">
+                <p>{{ item['title'] ? item['title'] : item['first_air_date'] ? item['name'] : item['name'] }}</p>
+            </div>
+            <div *ngIf="item['release_date'] || item['first_air_date']" class="info d-inline-flex pt-3">
+                <span>{{ item['release_date'] ? (item['release_date']  | date:"yyyy") : (item['first_air_date'] | date:"yyyy") }}</span>
+                <div class="vr mx-2"></div>
+                <fa-icon [icon]="['fas', 'star']"></fa-icon>
+                <span>{{ item['vote_average'] }}</span>
+            </div>
+            <!-- <div *ngIf="item['gender']" class="info d-inline-flex pt-3">
+                <div *ngFor="let mov of item.known_for">
+                    <span *ngFor="let mov of item.known_for; let lastEl = last">
+                        {{ (mov.title ? mov.title : mov.name) | genre2 }}{{ lastEl ? '' : ', ' }}
+                    </span>
+                </div>
+            </div> -->
+        </div>
+    </swiper-slide>
+</swiper-container>

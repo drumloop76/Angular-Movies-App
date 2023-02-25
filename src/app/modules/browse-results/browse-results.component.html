@@ -1,6 +1,6 @@
 <div class="container-fluid">
-    <div class="container-xxl browse-container py-5">
-        <h1 class="ps-4 pb-5">Search results for "{{ browseTerm }}"</h1>
+    <div class="container-xxl browse-container py-5 px-2 px-sm-3 px-lg-4">
+        <h1 class="pb-5">Search results for "{{ browseTerm }}"</h1>
         <div class="browse-wrapper">
             <h2 *ngIf="headerMovies" class="mt-5 mb-4">Movies</h2>
             <div class="items-container" *ngFor="let item of browseItems">
@@ -10,7 +10,7 @@
                             *ngIf="item['poster_path']" 
                             class="me-1 position-absolute"
                             [ngSrc]="'w500' + item['poster_path']" 
-                            [alt]="item['title'] + ' poster image'" 
+                            [alt]="item['item'] + ' poster image'" 
                             fill
                         />
                         <img 
