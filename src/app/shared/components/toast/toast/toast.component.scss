@@ -1,0 +1,38 @@
+:host { 
+    position: fixed !important;
+    z-index: 1200;
+    position: fixed;
+    top: 0; 
+    right: 0; 
+    padding: 5rem 1rem 1rem;
+    ngb-toast {
+        min-width: 300px !important;
+        padding: 10px 0;
+        right: 200px;
+        transition: .4s;
+    }
+}
+
+.success {
+    background-color: #09d67659;
+    backdrop-filter: blur(9px);
+    color: white !important;
+}
+
+.error {
+    background-color: #ff001990;
+    backdrop-filter: blur(9px);
+    color: white !important;
+}
+
+.warning {
+    background-color: #ffc00374;
+    backdrop-filter: blur(9px);
+    color: white !important;
+}
+  
+.info {
+    background-color: #0267ff69;
+    backdrop-filter: blur(9px);
+    color: white !important;
+}

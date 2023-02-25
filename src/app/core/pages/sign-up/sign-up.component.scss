@@ -1,0 +1,27 @@
+@use 'abstracts' as *;
+
+.container-fluid {
+    background-color: $light-600;
+}
+
+.wrapper {
+    background: $light-100;
+    @include media-above(sm) {
+        max-width: 600px;
+    }
+    @include media-above(md) {
+        max-width: 992px;
+    }
+}
+
+form {
+    @include authForm;
+}
+
+.pass-container {
+    @include passType;
+}
+
+.redirectTo {
+    @include redirectTo;
+}

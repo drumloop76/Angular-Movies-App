@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { PipeModule } from './pipes/pipe.module';
-// import { CarouselBtnsDirective } from './directives/carousel-btns.directive';
 import { register } from 'swiper/element/bundle';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SwiperCarouselDirective } from './directives/swiper-carousel.directive';
@@ -10,15 +9,16 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faBars, faCaretDown, faMagnifyingGlass, faShareNodes, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
+import { ToastComponent } from './components/toast/toast/toast.component';
 
 
 
 
 @NgModule({
   declarations: [
-    // CarouselBtnsDirective,
     CarouselComponent,
-    SwiperCarouselDirective
+    SwiperCarouselDirective,
+    ToastComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,6 @@ import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@
   exports: [
     FontAwesomeModule,
     PipeModule,
-    // CarouselBtnsDirective,
     CarouselComponent,
     SwiperCarouselDirective,
   ],

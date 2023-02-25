@@ -1,1 +1,101 @@
-<p>sign-up works!</p>
+<div class="container-fluid py-5 px-3">
+    <div class="wrapper mx-auto py-5">
+        <h2 class="mb-5 text-center">Sign Up</h2>
+        <div class="row">
+            <div class="container col-12 col-md-8">
+                <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group mb-4">
+                        <div class="form-floating mb-5">
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                id="floatingFirstName" 
+                                formControlName="firstName"
+                                placeholder="FirstName"
+                                [ngClass]="{ 'is-invalid': (f['firstName'].dirty || f['firstName'].touched) && f['firstName'].errors }"
+                            >
+                            <label for="floatingFirstName">First Name</label>
+                            <div *ngIf="(f['firstName'].dirty || f['firstName'].touched) && f['firstName'].errors" class="invalid-feedback">
+                                <div *ngIf="f['firstName'].errors['required']">First Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <div class="form-floating mb-5">
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                id="floatingLastName" 
+                                formControlName="lastName"
+                                placeholder="Last Name"
+                                [ngClass]="{ 'is-invalid': (f['lastName'].dirty || f['lastName'].touched) && f['lastName'].errors }"
+                            >
+                            <label for="floatingLastName">Last Name</label>
+                            <div *ngIf="(f['lastName'].dirty || f['lastName'].touched) && f['lastName'].errors" class="invalid-feedback">
+                                <div *ngIf="f['lastName'].errors['required']">Last Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <div class="form-floating mb-5">
+                            <input 
+                                type="email" 
+                                class="form-control"
+                                id="floatingEmail" 
+                                formControlName="email"
+                                placeholder="Email"
+                                [ngClass]="{ 'is-invalid': (f['email'].dirty || f['email'].touched) && f['email'].errors }"
+                            >
+                            <label for="floatingEmail">Email address</label>
+                            <div *ngIf="(f['email'].dirty || f['email'].touched) && f['email'].errors" class="invalid-feedback">
+                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                <div *ngIf="f['email'].errors['pattern']">Email is invalid</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-floating pass-container position-relative">
+                            <input 
+                                [type]="passTextType ? 'text' : 'password'"
+                                class="form-control" 
+                                id="floatingPassword" 
+                                formControlName="password"
+                                placeholder="Password"
+                                [ngClass]="{ 'is-invalid': (f['password'].dirty || f['password'].touched) && f['password'].errors }"
+                            >
+                            <label for="floatingPassword">Password</label>
+                            <span class="eye-container position-absolute top-50 translate-middle" (click)="togglePassTextType()">
+                                <fa-icon *ngIf="!passTextType" [icon]="['far', 'eye']" ></fa-icon>
+                                <fa-icon *ngIf="passTextType" [icon]="['far', 'eye-slash']" ></fa-icon>
+                            </span>
+                            <div *ngIf="(f['password'].dirty || f['password'].touched) && f['password'].errors" class="invalid-feedback">
+                                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                <div *ngIf="f['password'].errors['pattern']">Username must be at least 8 characters</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex justify-content-center mt-5">
+                        <button 
+                            type="submit" 
+                            class="btn"  
+                            [disabled]="signUpForm.invalid"
+                        >
+                            Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="redirectTo mt-5 pb-3 text-center">
+            <span class="p-dark"> 
+                Go back to ? 
+                <span class="redirectLink" [routerLink]="['/login']">
+                    Log In
+                </span>
+            </span>
+        </div>
+    </div>
+    
+</div>
+
+
