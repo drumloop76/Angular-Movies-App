@@ -55,10 +55,10 @@
                     <div class="img-container">
                         <img 
                             *ngIf="r.poster_path || r.profile_path" 
-                            [ngSrc]="'w500' + r.poster_path || r.profile_path" 
-                            class="me-1 position-absolute" 
+                            class="w-100"
+                            [ngSrc]="r.poster_path ? 'w500' + r.poster_path : 'w500' + r.profile_path" 
+                            [alt]="r.title ? r.title + ' poster image' : r.name + ' poster image'"
                             fill
-                            [alt]="(r.title || r.name) + ' poster image'"
                         />
                         <img 
                             *ngIf="!r.poster_path && !r.profile_path" 
@@ -70,7 +70,7 @@
                         />
                     </div>            
                     <div class="info-container position-relative w-100 d-flex flex-column">
-                        <div *ngIf="r.release_date || r.first_air_date" class="info-title d-flex flex-wrap mb-2">
+                        <div *ngIf="r.release_date || r.first_air_date || r.known_for" class="info-title d-flex flex-wrap mb-2">
                             <ngb-highlight                                 
                                 class="title me-2" 
                                 [result]="r.title || r.name" 
@@ -88,7 +88,7 @@
                                     class="m-0 pe-2"
                                     *ngFor="let genre of r.genre_ids; let lastEl = last"
                                 >
-                                    {{ genre | genreName: moviesGenres: tvGenres }}{{ lastEl ? '' : ', ' }}
+                                    {{ genre | genreName : allGenres }}{{ lastEl ? '' : ', ' }}
                                 </p>
                             </div>
                         </div>

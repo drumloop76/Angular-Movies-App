@@ -20,8 +20,7 @@ export class HomeComponent {
   @Output() popularMovies: PopularMovies[] = [];
   @Output() popularTvShows: PopularTvShows[] = [];
   @Output() popularPeople: PopularPeople[] = [];
-  @Output() moviesGenres: Genres[] = [];
-  @Output() tvGenres: Genres[] = [];
+  @Output() allGenres: Genres[] = [];
 
   @Output() personMovieTitles: any [] = []
 
@@ -37,8 +36,7 @@ export class HomeComponent {
     this.getPopularMovies();
     this.getPopularTvShows();
     this.getPopularPeople();
-    this.getMoviesGenres();
-    this.getTvGenres();
+    this.getAllGenres();
   }
 
   getNowPlaying(): void {
@@ -73,15 +71,9 @@ export class HomeComponent {
     
   }
 
-  getMoviesGenres() {
-    this._genresService.getMoviesGenres().subscribe((data: any) => {
-      this.moviesGenres = data;
-    });
-  }
-
-  getTvGenres() {
-    this._genresService.getTvGenres().subscribe((data: any) => {
-      this.tvGenres = data;
+  getAllGenres() {
+    this._genresService.getAllGenres().subscribe((data: any) => {
+      this.allGenres = data
     });
   }
 

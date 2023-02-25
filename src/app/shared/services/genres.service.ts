@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -22,6 +22,18 @@ export class GenresService {
       .pipe(map((data: any) => {
         return data.genres
       }));
+  }
+
+  getAllGenres(): Observable<any[]> {
+    const movGen = this.getMoviesGenres();
+    const tvGen = this.getTvGenres();
+
+    return forkJoin([movGen, tvGen]).pipe(
+      map(([arr1, arr2]) => [
+        ...arr1,
+        ...arr2
+      ])
+    );
   }
 
 }

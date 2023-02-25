@@ -6,11 +6,10 @@ import { Genres } from '../models/genres.model';
 })
 
 export class GenreNamePipe implements PipeTransform {
-  transform(value: any, arr1: Genres[], arr2: Genres[]): any {
+  transform(value: any, arr: Genres[]): any {
     let newValue: any;
-    const fullArr = [ ...arr1, ...arr2];
 
-    (fullArr || []).filter((x: any) => {
+    (arr || []).filter((x: any) => {
       if(value === x.id) {
         newValue = x.name
       }

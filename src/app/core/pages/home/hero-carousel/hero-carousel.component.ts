@@ -11,8 +11,7 @@ import { SwiperOptions } from 'swiper';
 
 export class HeroCarouselComponent {
   @Input() movies: NowPlayingMovies[] = [];
-  @Input() moviesGenres: Genres[] = [];
-  @Input() tvGenres: Genres[] = [];
+  @Input() allGenres: Genres[] = [];
 
   config: SwiperOptions = {
     navigation: true,

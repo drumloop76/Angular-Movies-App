@@ -26,7 +26,7 @@
                     class="m-0 pe-2"
                     *ngFor="let genre of mov?.genre_ids | slice:0:3; let lastEl = last"
                 >
-                    {{ genre | genreName: moviesGenres: tvGenres }}{{ lastEl ? '' : ', ' }}
+                    {{ genre | genreName : allGenres }}{{ lastEl ? '' : ', ' }}
                 </p>
             </div>
             <div class="info-container">

@@ -13,8 +13,7 @@ import { SearchService } from 'src/app/shared/services/search.service';
 export class BrowseResultsComponent implements OnInit, OnDestroy {
   browseItems: any[] = [];
   browseTerm: string = '';
-  moviesGenres: Genres[] = [];
-  tvGenres: Genres[] = [];
+  allGenres: Genres[] = [];
   headerMovies: boolean = false;
   headerTvShow: boolean = false;
   headerPeaople: boolean = false;
@@ -26,8 +25,7 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getBrowseItems();
-    this.getMoviesGenres();
-    this.getTvGenres();
+    this.getAllGenres();
   }
 
   getBrowseItems() {
@@ -41,16 +39,9 @@ export class BrowseResultsComponent implements OnInit, OnDestroy {
     })
   }
 
-  getMoviesGenres() {
-    this._genresService.getMoviesGenres().subscribe((data: any) => {
-      this.moviesGenres = data;
-      this._cdr.detectChanges();
-    });
-  }
-
-  getTvGenres() {
-    this._genresService.getTvGenres().subscribe((data: any) => {
-      this.tvGenres = data;
+  getAllGenres() {
+    this._genresService.getAllGenres().subscribe((data: any) => {
+      this.allGenres = data
       this._cdr.detectChanges();
     });
   }

@@ -22,8 +22,7 @@ export class SearchBoxComponent implements OnInit {
   searchSelector = "Select";
   searching = false;
 	searchFailed = false;
-  moviesGenres: Genres[] = [];
-  tvGenres: Genres[] = [];
+  allGenres: Genres[] = [];
 
   showSearchBox!: Observable<boolean>;
 
@@ -36,8 +35,7 @@ export class SearchBoxComponent implements OnInit {
 
   ngOnInit() {
     this.showSearchBox = this._searchService.getSearchBox();
-    this.getMoviesGenres();
-    this.getTvGenres();
+    this.getAllGenres();
   }
 
   closeInsideSearch() {
@@ -50,15 +48,9 @@ export class SearchBoxComponent implements OnInit {
     this.searchSelector = label;
   }
 
-  getMoviesGenres() {
-    this._genresService.getMoviesGenres().subscribe((data: any) => {
-      this.moviesGenres = data;
-    });
-  }
-
-  getTvGenres() {
-    this._genresService.getTvGenres().subscribe((data: any) => {
-      this.tvGenres = data;
+  getAllGenres() {
+    this._genresService.getAllGenres().subscribe((data: any) => {
+      this.allGenres = data
     });
   }
 
