@@ -4,10 +4,10 @@ import { NowPlayingMovies, NowPlayingMoviesData } from 'src/app/shared/models/no
 import { PopularPeople, PopularPeopleData } from 'src/app/shared/models/people';
 import { PopularMovies, PopularMoviesData } from 'src/app/shared/models/popularMovies';
 import { PopularTvShows, PopularTvShowsData } from 'src/app/shared/models/popularTvShows';
-import { GenresService } from 'src/app/shared/services/genres.service';
-import { MoviesService } from 'src/app/shared/services/movies.service';
-import { PeopleService } from 'src/app/shared/services/people.service';
-import { TvShowsService } from 'src/app/shared/services/tv-shows.service';
+import { GenresService } from 'src/app/shared/services/genres/genres.service';
+import { MoviesService } from 'src/app/shared/services/movies/movies.service';
+import { PeopleService } from 'src/app/shared/services/people/people.service';
+import { TvShowsService } from 'src/app/shared/services/tv-shows/tv-shows.service';
 import { environment } from 'src/environments/environment';
 
 @Component({

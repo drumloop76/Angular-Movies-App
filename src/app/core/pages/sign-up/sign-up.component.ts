@@ -43,9 +43,7 @@ export class SignUpComponent {
   onSubmit() {
     this.submitted = true;
 
-    if(this.signUpForm.invalid) {
-      return
-    }
+    if(this.signUpForm.invalid) return
 
     this.authService.signUp(
       this.signUpForm.value.firstName, 

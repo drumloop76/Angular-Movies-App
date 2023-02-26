@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Genres } from 'src/app/shared/models/genres.model';
-import { GenresService } from 'src/app/shared/services/genres.service';
-import { SearchService } from 'src/app/shared/services/search.service';
+import { GenresService } from 'src/app/shared/services/genres/genres.service';
+import { SearchService } from 'src/app/shared/services/search/search.service';
 
 @Component({
   selector: 'app-browse-results',

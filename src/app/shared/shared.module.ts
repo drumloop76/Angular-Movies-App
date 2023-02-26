@@ -18,7 +18,7 @@ import { ToastComponent } from './components/toast/toast/toast.component';
   declarations: [
     CarouselComponent,
     SwiperCarouselDirective,
-    ToastComponent
+    ToastComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +31,7 @@ import { ToastComponent } from './components/toast/toast/toast.component';
     PipeModule,
     CarouselComponent,
     SwiperCarouselDirective,
+    ToastComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

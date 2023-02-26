@@ -5,8 +5,8 @@ import { catchError, debounceTime, distinctUntilChanged, map, tap, switchMap } f
 import { Animations } from 'src/app/shared/animations/animations';
 import { searchOptions } from 'src/app/shared/helpers/helpers';
 import { Genres } from 'src/app/shared/models/genres.model';
-import { GenresService } from 'src/app/shared/services/genres.service';
-import { SearchService } from 'src/app/shared/services/search.service';
+import { GenresService } from 'src/app/shared/services/genres/genres.service';
+import { SearchService } from 'src/app/shared/services/search/search.service';
 
 @Component({
   selector: 'app-search-box',

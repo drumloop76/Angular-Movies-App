@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PopularTvShowsData } from '../models/popularTvShows';
+import { PopularTvShowsData } from '../../models/popularTvShows';
 
 @Injectable({
   providedIn: 'root'

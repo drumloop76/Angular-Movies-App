@@ -12,6 +12,9 @@
     @include media-above(md) {
         max-width: 992px;
     }
+    .header {
+        color: $dark-600;
+    }
 }
 
 form {

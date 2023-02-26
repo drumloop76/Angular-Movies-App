@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { navMediaItems, navMenuItems } from 'src/app/shared/helpers/helpers';
-import { SearchService } from 'src/app/shared/services/search.service';
-import { SidebarService } from 'src/app/shared/services/sidebar.service';
+import { SearchService } from 'src/app/shared/services/search/search.service';
+import { SidebarService } from 'src/app/shared/services/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-navbar',

@@ -29,6 +29,8 @@ import { VerifyEmailComponent } from './core/pages/verify-email/verify-email.com
 import { SearchBoxComponent } from './core/components/search-box/search-box.component';
 import { SharedModule } from './shared/shared.module';
 import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-carousel.component';
+import { InterceptorProviders } from './shared/interceptors';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,17 @@ import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-caro
     NgbModule,
     NgOptimizedImage,
     SharedModule,
+    ToastrModule.forRoot({
+      progressBar: true,
+      timeOut: 200000,
+      closeButton: true,
+      // iconClasses: {
+      //   warning: 'fas fa-trash',
+      //   // info: 'fa fa-info',
+      //   // success: 'fas fa-check',
+      //   // warning: 'something',
+      // },
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
@@ -62,7 +75,8 @@ import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-caro
     provideStorage(() => getStorage())
   ],
   providers: [
-    provideImgixLoader('https://image.tmdb.org/t/p/')
+    provideImgixLoader('https://image.tmdb.org/t/p/'),
+    InterceptorProviders
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
