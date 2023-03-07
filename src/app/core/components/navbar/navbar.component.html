@@ -75,6 +75,23 @@
             <button class="action-item" [routerLink]="['login']">
                 <fa-icon [icon]="['far', 'user']"></fa-icon>
             </button>
+            <div
+                ngbDropdown 
+                class="media-container"
+                display="dynamic" 
+                placement="bottom-end"
+            >
+                <button 
+                    ngbDropdownToggle
+                    class="media-container--btn action-item user-btn mx-auto w-100 d-flex align-items-center"
+                    id="navUserDropdown"
+                    style="background-color: coral;"
+                >
+                    <fa-icon [icon]="['fas', 'circle-user']" class="me-3"></fa-icon>
+                    "userName"
+                </button>
+                <app-user-menu ngbDropdownMenu></app-user-menu>
+            </div>
             <div 
                 ngbDropdown 
                 class="media-container"

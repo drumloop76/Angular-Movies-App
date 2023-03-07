@@ -82,5 +82,6 @@ export const searchOptions = [
   {
     label: 'People',
     value: 'person'
+
   }
 ]

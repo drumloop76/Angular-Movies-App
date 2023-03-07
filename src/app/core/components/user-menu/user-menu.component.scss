@@ -1,0 +1,18 @@
+@use 'abstracts' as *;
+
+.dropdown-menu {
+    -webkit-box-shadow: $dark-box-shadow; 
+    box-shadow: $dark-box-shadow;
+}
+
+.dropdown-item {
+    border-bottom: 1px solid rgba(black, .4);
+    &:last-child {
+        border-bottom: none;
+    }
+    .dropdown-link {
+        display: block;
+        padding: 17px 20px;
+        font-size: 17px;
+    }
+}

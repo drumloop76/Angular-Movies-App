@@ -17,8 +17,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request)
       .pipe(
-        tap(x => this.toastr.success('message', 'Success')),
-        tap(x => console.log('df')),
         retry({
           count: 2, 
           delay: 1000,
@@ -26,17 +24,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         catchError((err: HttpErrorResponse) => {
           let errorMessage = '';
           if (err.error instanceof ErrorEvent) {
-              // client-side error
               this.toastr.error('This is client side error.', `Error ${err.error.message}` );
               errorMessage = `client-side error: Error: ${err.error.message}`;
           } else {
-              // server-side error
-              this.toastr.error(`This is server side error.`, `Error Code: ${err.status}`);
+              this.toastr.error('This is server side error.', `Error Code: ${err.status}`);
               errorMessage = `server-side error: Error Status: ${err.status}\n\nMessage: ${err.message}`;
           }
-          // console.log('Interceptor errorMesagge: ', errorMessage);
           return throwError(() => {
-            // console.log('Interceptor throwError msg')
             return errorMessage
           });
         })
@@ -44,10 +38,3 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       )
   }
 }
-
-
-// .pipe(
-//   retry({
-//     count: 3,
-//     delay: (_, retryCount) => timer(retryCount * 1000),
-//   }),

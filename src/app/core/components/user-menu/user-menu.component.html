@@ -1,0 +1,47 @@
+<ul 
+    ngbDropdownMenu
+    class="dropdown media-menu position-absolute p-0"
+    aria-labelledby="navUserDropdown"
+>
+    <li class="dropdown-item media-item">
+        <a 
+            class="dropdown-link media-link"
+            routerLinkActive="list-link-active"
+        >
+            Bookmarks
+        </a>
+    </li>
+    <li class="dropdown-item media-item">
+        <a 
+            class="dropdown-link media-link"
+            routerLinkActive="list-link-active"
+        >
+            Ratings
+        </a>
+    </li>
+    <li class="dropdown-item media-item">
+        <a 
+            class="dropdown-link media-link"
+            routerLinkActive="list-link-active"
+        >
+            Watchlist
+        </a>
+    </li>
+    <li class="dropdown-item media-item">
+        <a 
+            class="dropdown-link media-link"
+            routerLinkActive="list-link-active"
+        >
+            Setings
+        </a>
+    </li>
+    <li class="dropdown-item media-item">
+        <a 
+            class="dropdown-link media-link"
+            routerLinkActive="list-link-active"
+            (click)="onOpenModalClick()"
+        >
+            Logout
+        </a>
+    </li>
+</ul>

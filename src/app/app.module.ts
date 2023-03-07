@@ -31,6 +31,7 @@ import { SharedModule } from './shared/shared.module';
 import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-carousel.component';
 import { InterceptorProviders } from './shared/interceptors';
 import { ToastrModule } from 'ngx-toastr';
+import { UserMenuComponent } from './core/components/user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ToastrModule } from 'ngx-toastr';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     SearchBoxComponent,
-    HeroCarouselComponent
+    HeroCarouselComponent,
+    UserMenuComponent
   ],
   imports: [
     BrowserModule,
