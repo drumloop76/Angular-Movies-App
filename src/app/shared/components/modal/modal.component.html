@@ -1,1 +1,28 @@
-<p>modal works!</p>
+<div class="modal-header">
+	<h5 class="modal-title">
+        {{ options.title}}
+    </h5>
+	<button 
+        type="button" 
+        class="btn-close" 
+        aria-label="Close" 
+        (click)="dismiss()">
+    </button>
+</div>
+<div class="modal-body">
+    <p>{{ options.message }}</p>
+</div>
+<div class="modal-footer">
+    <button *ngIf="options.confirmBtnText"
+        type="button" 
+        class="btn btn-confirm btn-danger" 
+        (click)="confirm()">
+        {{ options.confirmBtnText }}
+    </button>
+    <button *ngIf="options.dismissBtnText"
+        type="button" 
+        class="btn btn-dismiss btn-secondary" 
+        (click)="dismiss()">
+        {{ options.dismissBtnText }}
+    </button>
+</div>

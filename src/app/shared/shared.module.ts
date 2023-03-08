@@ -11,6 +11,9 @@ import { faEye, faEyeSlash, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 import { ToastComponent } from './components/toast/toast/toast.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ModalStateService } from './services/modal/modal-state.service';
+import { ModalService } from './services/modal/modal.service';
+import { ModalTemplateDirective } from './directives/modal-template.directive';
 
 
 
@@ -21,6 +24,7 @@ import { ModalComponent } from './components/modal/modal.component';
     SwiperCarouselDirective,
     ToastComponent,
     ModalComponent,
+    ModalTemplateDirective,
   ],
   imports: [
     CommonModule,
@@ -34,8 +38,11 @@ import { ModalComponent } from './components/modal/modal.component';
     CarouselComponent,
     SwiperCarouselDirective,
     ToastComponent,
+    ModalComponent,
+    ModalTemplateDirective,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [ ModalStateService, ModalService ]
 })
 
 export class SharedModule { 

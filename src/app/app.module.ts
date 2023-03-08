@@ -32,6 +32,7 @@ import { HeroCarouselComponent } from './core/pages/home/hero-carousel/hero-caro
 import { InterceptorProviders } from './shared/interceptors';
 import { ToastrModule } from 'ngx-toastr';
 import { UserMenuComponent } from './core/components/user-menu/user-menu.component';
+import { modalConfigOptions } from './shared/models/modalOptions';
 
 @NgModule({
   declarations: [
@@ -63,12 +64,6 @@ import { UserMenuComponent } from './core/components/user-menu/user-menu.compone
       progressBar: true,
       timeOut: 200000,
       closeButton: true,
-      // iconClasses: {
-      //   warning: 'fas fa-trash',
-      //   // info: 'fa fa-info',
-      //   // success: 'fas fa-check',
-      //   // warning: 'something',
-      // },
     }),
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -78,7 +73,8 @@ import { UserMenuComponent } from './core/components/user-menu/user-menu.compone
   ],
   providers: [
     provideImgixLoader('https://image.tmdb.org/t/p/'),
-    InterceptorProviders
+    InterceptorProviders,
+    modalConfigOptions
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

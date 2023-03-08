@@ -1,0 +1,24 @@
+@use 'abstracts' as *;
+
+.modal-header {
+    background-color: $light-300;
+    padding: 10px 16px;
+    .modal-title {
+
+    }
+    .btn-close {
+        color: $dark-600;
+        width: .5em;
+        &:focus, &:active {
+            outline: 0 !important;
+            box-shadow: none;
+         }
+    }
+}
+
+.modal-body {
+    p {
+        color: $dark-600;
+        font-size: 17px;
+    }
+}
