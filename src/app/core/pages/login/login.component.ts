@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent {
   loginForm: FormGroup;
   submitted = false;
@@ -18,7 +19,10 @@ export class LoginComponent {
     this.passTextType = !this.passTextType;
   }
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder, 
+    public authService: AuthService
+  ) {
     this.loginForm = this.fb.group({
       email: [ '', [ 
         Validators.required,

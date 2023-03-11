@@ -1,0 +1,22 @@
+@use 'abstracts' as *;
+
+.container-fluid {
+    background-color: $light-600;
+}
+
+.wrapper {
+    background: $light-100;
+    @include media-above(sm) {
+        max-width: 600px;
+    }
+    @include media-above(md) {
+        max-width: 992px;
+    }
+    .header {
+        color: $dark-600;
+    }
+}
+
+.redirectTo {
+    @include redirectTo;
+}

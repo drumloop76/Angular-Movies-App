@@ -82,18 +82,30 @@
             <div class="container-right text-center col-12 col-md-6 px-3 px-sm-5 p-md-0 px-lg-4 mb-3 mb-md-0">
                 <h4>Login with social</h4>
                 <div class="sign-social d-flex flex-column align-items-center">
-                    <a href="#" class="login-social-item">
+                    <button 
+                        type="button" 
+                        class="login-social-item"
+                        (click)="authService.googleLogin()"
+                    >
                         <span class=""></span>
-                        <span class="title">Login with Google</span>
-                    </a>
-                    <a href="#" class="login-social-item">
+                        <span class="title">Log in with Google</span>
+                    </button>
+                    <button 
+                        type="button" 
+                        class="login-social-item"
+                        disabled
+                    >
                         <span class=""></span>
-                        <span class="title">Login with Facebook</span>
-                    </a>
-                    <a href="#" class="login-social-item">
+                        <span class="title">Log in with Facebook</span>
+                    </button>
+                    <button 
+                        type="button" 
+                        class="login-social-item"
+                        disabled
+                    >
                         <span class=""></span>
-                        <span class="title">Login with Twitter</span>
-                    </a>
+                        <span class="title">Log in with Twitter</span>
+                    </button>
                 </div>
             </div>
         </div>

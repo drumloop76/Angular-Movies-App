@@ -5,6 +5,7 @@ import { HomeComponent } from './core/pages/home/home.component';
 import { LoginComponent } from './core/pages/login/login.component';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
 import { SignUpComponent } from './core/pages/sign-up/sign-up.component';
+import { VerifyEmailComponent } from './core/pages/verify-email/verify-email.component';
 import { SettingsComponent } from './core/user-pages/settings/settings.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent, pathMatch: 'full' },
   { path: 'settings', component: SettingsComponent, pathMatch: 'full' },
   { path: 'forgot-password', component: ForgotPasswordComponent, pathMatch: 'full' },
+  { path: 'verify-email', component: VerifyEmailComponent, pathMatch: 'full' },
   { path: 'browse', loadChildren: () => import('./modules/browse-results/browse-results.module').then(m => m.BrowseResultsModule) },
   { path: 'movies', loadChildren: () => import('./modules/movies/movies.module').then(m => m.MoviesModule) }, 
   { path: 'shows', loadChildren: () => import('./modules/tv-shows/tv-shows.module').then(m => m.TvShowsModule) }, 

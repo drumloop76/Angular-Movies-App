@@ -90,9 +90,22 @@
                     ngbDropdownToggle
                     class="media-container--btn action-item user-btn mx-auto w-100 d-flex align-items-center"
                     id="navUserDropdown"
-                    style="background-color: coral;"
                 >
-                    <fa-icon [icon]="['fas', 'circle-user']" class="me-3"></fa-icon>
+                    <fa-icon 
+                        *ngIf="!(user | async)?.photoURL"
+                        [icon]="['fas', 'circle-user']" 
+                        class="me-3"
+                        style="color: rgb(54, 178, 255); font-size: 28px;"
+                    >
+                    </fa-icon>
+                    <img 
+                        *ngIf="(user | async)?.photoURL"
+                        class="media-container--btn__img me-3"
+                        src="{{userImg}}"
+                        alt="loged users photo"
+                        width="30"
+                        height="30"
+                    />
                     {{ (user | async)?.displayName | firstName }}
                 </button>
                 <app-user-menu ngbDropdownMenu></app-user-menu>

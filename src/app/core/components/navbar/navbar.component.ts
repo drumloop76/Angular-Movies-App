@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   showLoginBtn: boolean = false;
   showUserBtn: boolean = false;
+  userImg!: string;
 
   private readonly userDisposable: Subscription | undefined;
   public readonly user: Observable<User | null> = EMPTY;
@@ -38,10 +39,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
       if(auth) {
         this.user = authState(this.auth);
-        this.userDisposable = authState(this.auth).pipe(
-          traceUntilFirst('auth'),
-          map(user => !!user)
-        ).subscribe()
+        this.userDisposable = authState(this.auth)
+          .pipe(
+            traceUntilFirst('auth'),
+            map(user => {
+              if(user && user?.photoURL !== null) {
+                const img: string = user!.photoURL
+                this.userImg = img;
+              }
+              !!user
+            })
+          )
+          .subscribe()
       }
     }
 

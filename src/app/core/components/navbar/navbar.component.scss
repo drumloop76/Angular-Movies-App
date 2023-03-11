@@ -70,12 +70,12 @@
 .navbar-brand {
     @include logo;
     display: none;
-    @include media-above(xs) {
+    @include media-above(sm) {
         display: block;
         position: absolute;
         left: 70px;
     }
-    @include media-above(sm) {
+    @include media-above(md) {
         left: 50%;
         transform: translateX(-50%);
     }
@@ -89,6 +89,19 @@
         height: 40px;
         border: none;
         outline: none;
+        &.user-btn {
+            background: rgb(27, 27, 27);
+            color: $light-300;
+            border: 1px solid rgb(105, 105, 105);
+            border-radius: 5px;
+            &:hover {
+                background: rgb(65, 65, 65);
+                color: $white;
+            }
+            .media-container--btn__img {
+                border-radius: 50%;
+            }
+        }
         fa-icon {
             color: $light-300;
             font-size: 24px;

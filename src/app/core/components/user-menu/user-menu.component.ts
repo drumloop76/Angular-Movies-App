@@ -29,10 +29,6 @@ export class UserMenuComponent {
     this.confirmService.confirm(options).then(
       () => {
         this.authService.logout();
-        this.toastr.info(
-          'You are successfully loged out', 
-          'Info'
-        )
       },
       () => {}
     );
