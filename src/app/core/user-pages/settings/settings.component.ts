@@ -1,42 +1,38 @@
 import { Component } from '@angular/core';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { createTemplateOptions } from 'src/app/shared/utils/modal-utils';
 
 @Component({
-  selector: 'app-user-menu',
-  templateUrl: './user-menu.component.html',
-  styleUrls: ['./user-menu.component.scss']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss']
 })
-export class UserMenuComponent {
-  
+export class SettingsComponent {
   constructor(
     private confirmService: ModalService, 
     private toastr: ToastrService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {}
   
-  onOpenModalClick() {
+  onOpenDeleteModal() {
     const options = createTemplateOptions(
-      'Confirm Logout',
-      'Are you sure you want to LOGOUT?',
-      'Logout',
-      'Dismiss'
+      'Delete account',
+      'Are you sure you want to DELETE your account?',
+      'YES, DELETE MY ACCOUNT',
+      'DISMISS'
     );
 
     this.confirmService.confirm(options).then(
       () => {
-        this.authService.logout();
-        this.toastr.info(
-          'You are successfully loged out', 
-          'Info'
+        this.authService.deleteUserAccount();
+        this.toastr.warning(
+          'You have deleted your account', 
+          'Warning'
         )
       },
       () => {}
     );
-
   }
-
 }

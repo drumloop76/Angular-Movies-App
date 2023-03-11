@@ -6,7 +6,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { SwiperCarouselDirective } from './directives/swiper-carousel.directive';
 
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBars, faCaretDown, faCircleUser, faMagnifyingGlass, faShareNodes, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCaretDown, faCircleUser, faMagnifyingGlass, faShareNodes, faStar, faUserXmark, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faEye, faEyeSlash, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGoogle, faInstagram, faTwitter, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 import { ToastComponent } from './components/toast/toast/toast.component';
@@ -63,7 +63,8 @@ export class SharedModule {
       faStar,
       faEye,
       faEyeSlash,
-      faCircleUser
+      faCircleUser,
+      faUserXmark
     )
   }
 }

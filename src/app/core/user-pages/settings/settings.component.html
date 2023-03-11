@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="container-xxl">
+        <div class="delete-account-container col px-4">
+            <!-- <div class="d-flex align-items-center mt-5 mb-4">
+                <h3 class="mb-0 me-3">Delete your Account</h3>
+                <fa-icon [icon]="['fas', 'user-xmark']"></fa-icon>
+            </div> -->
+            <h3 class="mt-5 mb-4">Delete your Account</h3>
+            <p>
+                Your account contains personal data that you have given us. This
+                section allows you to <span class="highlight">delete</span> that
+                data or view your subscription details.
+            </p>
+            <p>
+                Deleting this data will permanently remove your account, and
+                <span class="highlight">this cannot be recovered.</span>
+            </p>
+            <p>
+                You will be asked to confirm that you want to delete your account. There is no undo, so please be careful!
+            </p>
+            <div class="delete-button">
+                <button 
+                    (click)="onOpenDeleteModal()"
+                >
+                Delete account
+                  <!-- <mat-icon>delete_forever</mat-icon>Delete -->
+                </button>
+              </div>
+        </div>
+    </div>
+</div>

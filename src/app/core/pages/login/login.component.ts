@@ -38,17 +38,10 @@ export class LoginComponent {
   onSubmit() {
     this.submitted = true;
 
-    if(this.loginForm.invalid) {
-      return
-    }
+    if(this.loginForm.invalid) return
 
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
-
     this.loginForm.reset();
   }
-
-  // deleteUserAccount() {
-  //   this.authService.deleteAccount()
-  // }
 
 }

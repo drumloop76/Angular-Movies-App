@@ -34,6 +34,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserMenuComponent } from './core/components/user-menu/user-menu.component';
 import { modalConfigOptions } from './shared/models/modalOptions';
 
+import { SettingsComponent } from './core/user-pages/settings/settings.component';
+import { BookmarksComponent } from './core/user-pages/bookmarks/bookmarks.component';
+import { RatingsComponent } from './core/user-pages/ratings/ratings.component';
+import { WatchlistComponent } from './core/user-pages/watchlist/watchlist.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +53,11 @@ import { modalConfigOptions } from './shared/models/modalOptions';
     VerifyEmailComponent,
     SearchBoxComponent,
     HeroCarouselComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    SettingsComponent,
+    BookmarksComponent,
+    RatingsComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +71,7 @@ import { modalConfigOptions } from './shared/models/modalOptions';
     SharedModule,
     ToastrModule.forRoot({
       progressBar: true,
-      timeOut: 200000,
+      timeOut: 5000,
       closeButton: true,
     }),
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,17 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import {
-  getAuth,
-  updateEmail,
-  sendEmailVerification,
-  reauthenticateWithCredential,
-  EmailAuthProvider,
-  updatePassword,
-  deleteUser,
-} from 'firebase/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { ToastService } from '../toast/toast.service';
+import firebase from 'firebase/compat';
+import { ToastrService } from 'ngx-toastr';
+import { UserData } from '../../models/userData';
 
 @Injectable({
   providedIn: 'root'
@@ -23,49 +16,54 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
-    private toastService: ToastService,
-  ) { }
+    private toastr: ToastrService,
+  ) { 
+    // OPTIONAL !!!
+    this.afAuth.authState.subscribe((user) => {
+      if(user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        JSON.parse(localStorage.getItem('user')!);
+      } else {
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
+      }
+    });
+  }
 
   signUp(firstName: string, lastName: string, email: string,password: string) {
-    this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then((res) => {
-        if(res.user) {
-          this.afs.collection('users').doc(res.user.uid).set({
-            firstname: firstName,
-            lastName: lastName,
-            email: email,
-            password: password
-          });
-        }
-        this.router.navigate(['/login']);
-        this.toastService.show(
-          'Your Confirmation Email Sent', 
-          { 
-            classname: 'success', 
-            delay: 5000 
+    this.afAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then(
+        (res) => {
+          if(res.user) {
+            this.afs.collection('users').doc(res.user.uid).set({
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              password: password
+            });
           }
-        );
-        // this.modalService.open(content, { centered: true });
-        this.sendEmailVerification(res.user);
-      },
+          this.sendEmailVerification(res.user);
+          this.updateDisplayName(res.user, firstName, lastName)
+          this.router.navigate(['/login']);
+          this.toastr.info('Your Confirmation Email Has Been Sent', 'Info');
+        },
         (err) => {
-          console.log(err);
-          this.toastService.show(
-            // 'Something got wrong ',
-            'The email address is wrong', 
-            { 
-              classname: 'error', 
-              delay: 5000 
-            }
-          );
+          this.toastr.error('The email address is wrong', 'SignUp Error')
         }
       )
-      
   }
   
-  // ------------------------------------------------------------------
+  // -------------------- EmailVerification / DisplayName----------------------------------------------
+
   sendEmailVerification(user: any) {
     user.sendEmailVerification();
+  }
+
+  async updateDisplayName(user: firebase.User | null, firstName: string, lastName: string) {
+    return await user?.updateProfile({
+      displayName: `${firstName} ${lastName}`
+    });
   }
 
   // ------------------------------------------------------------------
@@ -73,127 +71,81 @@ export class AuthService {
     this.afAuth.signInWithEmailAndPassword(email, password)
       .then(
         (res) => {
-          if (res.user?.emailVerified == true) {
+          if(res.user?.emailVerified == true) {
             localStorage.setItem('token', 'true');
+            this.setUserData(res.user);
             this.router.navigate(['/home']);
+            this.toastr.success('You are Loged In', 'Success');
           } else {
-            this.toastService.show(
-              'Confirm your account through email verification', 
-              { 
-                classname: 'info', 
-                delay: 5000 
-              }
-            );
-            this.sendEmailVerification(res.user);
+            this.toastr.warning('Confirm your account through email verification', 'Warning');
           }
         },
         (err) => {
-          if (err.code == 'auth/too-many-requests') {
-            this.toastService.show(
-              'Access to this account has been temporarily disabled due to many failed login attempts. Try again later', 
-              { 
-                classname: 'warning', 
-                delay: 5000 
-              }
-            );
+          if(err.code == 'auth/too-many-requests') {
+            this.toastr.error('Access to this account has been temporarily disabled due to many failed login attempts. Try again later', 'Login Error');
             return;
+          } else if(err.code == 'auth/user-not-found') {
+            this.toastr.error('There is no user record corresponding to this identifier. The user may have been deleted.', 'Login Error');
+          } else {
+            this.toastr.error('The email adress or password is incorrect. Please try again', 'Login Error');
           }
-          this.toastService.show(
-            'The email adress or password is incorrect. Please try again', 
-            { 
-              classname: 'warning', 
-              delay: 5000 
-            }
-          );
-          this.router.navigate(['/login']);
         }
       );
   }
 
+  async setUserData(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+
+    const userData: UserData = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified,
+    };
+
+    return await userRef.set(userData, {
+      merge: true
+    });
+  }
+
+  get isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return token !== null;
+  }
+
   // ------------------------------------------------------------------
-  signOut() {
-    this.afAuth.signOut()
+  
+  logout() {
+    this.afAuth
+      .signOut()
       .then(() => {
           localStorage.removeItem('token');
+          localStorage.removeItem('user');
           this.router.navigate(['/login']);
-          this.toastService.show(
-            'You are signed out.', 
-            { 
-              classname: 'info', 
-              delay: 5000 
-            }
-          );
         },
         (err) => {
-          this.toastService.show(
-            err.message, 
-            { 
-              classname: 'warning', 
-              delay: 5000 
-            }
-          );
+          this.toastr.error(err.message, 'LogOut Error');
         }
       );
   }
 
-  // ------------------------------------------------------------------
-deleteAccount() {
-  // const dialogRef = this.dialog.open(DialogComponent, {
-  //   data: {
-  //     title: 'Delete Confirmation',
-  //     description:
-  //       'Deleting this data will permanently remove your account, and this cannot be recovered.',
-  //   },
-  // });
-  // dialogRef.afterClosed().subscribe((result) => {
-  //   if (result == true) {
-  //     this.dialog
-  //       .open(PasswordDialogComponent)
-  //       .afterClosed()
-  //       .subscribe((result) => {
-  //         if (result == true) {
-  //           const user = getAuth().currentUser;
-  //           if (user && user.email) {
-  //             const credential = EmailAuthProvider.credential(
-  //               user.email,
-  //               this.password
-  //             );
-  //             reauthenticateWithCredential(user, credential).then(
-  //               () => {
-  //                 deleteUser(user).then(() => {
-  //                   sendEmailVerification(user).then(() => {});
-  //                 });
-  //                 this.router.navigate(['/login']);
-  //                 this.openSnackBar('Account deleted', 'X');
-  //               },
-  //               (error) => {
-  //                 this.openSnackBar(
-  //                   'The password is incorrect. Please try again',
-  //                   'X'
-  //                 );
-  //               }
-  //             );
-  //           }
-  //           return;
-  //         }
-  //         this.openSnackBar('You have cancelled', 'X');
-  //       });
-  //   }
-  // });
+  // -------------------- DELETE ----------------------------------------------
+  
+  async deleteUserAccount() {
+    await this.afAuth.currentUser
+      .then(user => {
+        localStorage.removeItem('token')!;
+        localStorage.removeItem('user')!;
+        this.afs.collection('users').doc(user?.uid).delete();
+        user?.delete();
+      })
+      .catch(err => {
+        this.toastr.error('Error deleting user', 'Delete Account Error');
+      });
   }
 
 }
 
-
-
-// .catch((err) => {
-//   console.log(err, 'catched')
-//   this.toastService.show(
-//     'The email address is wrong', 
-//     { 
-//       classname: 'error', 
-//       delay: 5000 
-//     }
-//   );
-//   // this.handleError(err)
-// })
